@@ -20,7 +20,8 @@ description:         Please see the README on Github at <https://github.com/gith
 library
   hs-source-dirs:      src
   exposed-modules:     Lib
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       base >= 4.7 && < 5,
+                       network
   default-language:    Haskell2010
 
 executable Webserver-exe
@@ -29,8 +30,6 @@ executable Webserver-exe
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
                      , Webserver
-                     , network
-                     , socket
   default-language:    Haskell2010
 
 test-suite Webserver-test
@@ -39,8 +38,6 @@ test-suite Webserver-test
   main-is:             Spec.hs
   build-depends:       base
                      , Webserver
-                     , network
-                     , socket
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 
