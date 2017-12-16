@@ -1,6 +1,11 @@
+
 module Main where
 
 import Network.Socket
+import Data.ByteString.Lazy as BSL
+import Data.ByteString as BS
+import System.IO as IO
+
 data HttpStatusCode = Ok | NotFound
   deriving(Show, Enum)
 
@@ -25,7 +30,7 @@ main :: IO ()
 main  = do
       sock <- socket AF_INET Stream 0    -- create socket
       setSocketOption sock ReuseAddr 1   -- make socket immediately reusable - eases debugging.
-      putStrLn $ "Binding to socket on port " ++ show port
+      IO.putStrLn $ "Binding to socket on port " ++ show port
       bind sock (SockAddrInet port iNADDR_ANY)   -- listen on TCP port 4242.
       listen sock 2                              -- set a max of 2 queued connections
       mainLoop sock
@@ -33,13 +38,25 @@ main  = do
 mainLoop :: Socket -> IO()
 mainLoop sock = do
   conn <- accept sock
-  putStrLn "Accepting connection"
+  IO.putStrLn "Accepting connection"
   run conn
   mainLoop sock
 
 run :: (Socket, SockAddr) -> IO()
 run (sock, _) = do
-  putStr "\nSending message\n"
-  putStrLn $ show okLine
+  handle <- socketToHandle sock ReadWriteMode
+  hSetBuffering handle NoBuffering
+  IO.putStrLn "Got content:"
+  parseRequest handle
+
+  IO.putStr "\nSending message\n"
+  IO.putStrLn $ show okLine
   send sock $ show okLine ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
-  close sock
+
+  hClose handle
+
+parseRequest handle =
+  do
+    r1 <- BSL.hGet handle 1
+    rRest <- BSL.hGetNonBlocking handle 1024
+    IO.putStrLn (show (BSL.append r1 rRest))
