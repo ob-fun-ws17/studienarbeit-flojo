@@ -3,28 +3,13 @@ module Main where
 
 import Network.Socket
 import Data.ByteString.Lazy as BSL
-import Data.ByteString as BS
 import System.IO as IO
-
-data HttpStatusCode = Ok | NotFound
-  deriving(Show, Enum)
-
-code :: HttpStatusCode -> Int
-reasonPhrase :: HttpStatusCode -> [Char]
-
-code Ok = 200
-code NotFound = 404
-reasonPhrase Ok = "OK"
-reasonPhrase NotFound = "NOT FOUND"
-
-data ResponseLine = ResponseLine String HttpStatusCode
-
-instance Show ResponseLine where
-  show ( ResponseLine version status) = version ++ " " ++ show (code status) ++ " " ++ reasonPhrase status
-
-okLine = ResponseLine "HTTP/1.1" Ok
-
+import StatusCode
+import Response as R
+import Request
 port = 8080
+
+okLine = R.ResponseLine "HTTP/1.1" notFound
 
 main :: IO ()
 main  = do
@@ -47,16 +32,10 @@ run (sock, _) = do
   handle <- socketToHandle sock ReadWriteMode
   hSetBuffering handle NoBuffering
   IO.putStrLn "Got content:"
-  parseRequest handle
+  parse handle
 
   IO.putStr "\nSending message\n"
   IO.putStrLn $ show okLine
   send sock $ show okLine ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
 
   hClose handle
-
-parseRequest handle =
-  do
-    r1 <- BSL.hGet handle 1
-    rRest <- BSL.hGetNonBlocking handle 1024
-    IO.putStrLn (show (BSL.append r1 rRest))

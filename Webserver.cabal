@@ -20,6 +20,9 @@ description:         Please see the README on Github at <https://github.com/gith
 library
   hs-source-dirs:      src
   exposed-modules:     Lib
+                     , Request
+                     , Response
+                     , StatusCode
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
                        network,
                        bytestring

@@ -44,6 +44,12 @@ extra-deps: []
 # Override default flag values for local packages and extra-deps
 flags: {}
 
+docker:
+  enable: true
+  detach: false
+  run-args: ["--net=host", "--publish=80:8080"]
+
+
 # Extra package databases containing global packages
 extra-package-dbs: []
 
