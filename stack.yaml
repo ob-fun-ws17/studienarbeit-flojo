@@ -45,7 +45,7 @@ extra-deps: []
 flags: {}
 
 docker:
-  enable: true
+  enable: false
   detach: false
   run-args: ["--net=host", "--publish=80:8080"]
 
