@@ -31,8 +31,14 @@ run :: (Socket, SockAddr) -> IO()
 run (sock, _) = do
   handle <- socketToHandle sock ReadWriteMode
   hSetBuffering handle NoBuffering
+
+  --parseRequest' handle
+
+  requestString <- parseToString handle
+
+  let request = parseRequest requestString
   IO.putStrLn "Got content:"
-  parse handle
+  IO.putStrLn $ show request
 
   IO.putStr "\nSending message\n"
   IO.putStrLn $ show okLine

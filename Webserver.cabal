@@ -25,7 +25,8 @@ library
                      , StatusCode
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
                        network,
-                       bytestring
+                       bytestring,
+                       split
   default-language:    Haskell2010
 
 executable Webserver-exe
@@ -36,6 +37,7 @@ executable Webserver-exe
                      , Webserver
                      , network
                      , bytestring
+                     , split
   default-language:    Haskell2010
 
 test-suite Webserver-test
