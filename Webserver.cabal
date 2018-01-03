@@ -19,9 +19,10 @@ description:         Please see the README on Github at <https://github.com/gith
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
-                     , Request
+  exposed-modules:     Request.Request
                      , Response
+                     , Request.RequestLine
+                     , Request.Error
                      , StatusCode
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
                        network,
@@ -48,6 +49,9 @@ test-suite Webserver-test
   main-is:             Spec.hs
   build-depends:       base
                      , Webserver
+                     , hspec
+                     , QuickCheck
+                     , either-unwrap
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
 

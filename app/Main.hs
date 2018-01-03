@@ -6,7 +6,7 @@ import Data.ByteString.Lazy as BSL
 import System.IO as IO
 import StatusCode
 import Response as R
-import Request
+import Request.Request
 port = 8080
 
 okLine = R.ResponseLine "HTTP/1.1" notFound
