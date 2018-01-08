@@ -25,8 +25,8 @@ version (RequestLine _ _ v) = v
 
 fromString :: String -> ParseMonad RequestLine
 fromString line = toRequestLine fields
-  where fields = splitOn "\\s" line
-        toRequestLine ["GET",p,"HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
-        toRequestLine [m, p, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
-        toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported v
+  where fields = splitOn " " line
+        toRequestLine ["GET", p ,"HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
+        toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
+        toRequestLine ["GET", _, v] = Left $ HttpVersionNotSupported v
         toRequestLine param@_ = Left $ RequestLineMalformed line

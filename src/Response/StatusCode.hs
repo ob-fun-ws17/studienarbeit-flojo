@@ -1,20 +1,20 @@
-module StatusCode (
+module Response.StatusCode (
     StatusCode(..)
   , Code
-  , code
-  , reason
+  , getStatusCode
+  , getReasonPhrase
   , ok
   , notFound
 ) where
 
   data Code = Continue | NotFound | Ok
-  data StatusCode = StatusCode { s :: Code, c :: Integer, r :: [Char]}
+  data StatusCode = StatusCode { code :: Code, statusCode :: Integer, reasonPharse :: [Char]}
 
-  code :: StatusCode -> Integer
-  code (StatusCode _ value _) = value
+  getStatusCode :: StatusCode -> Integer
+  getStatusCode (StatusCode _ value _) = value
 
-  reason :: StatusCode -> [Char]
-  reason (StatusCode _ _ phrase) = phrase
+  getReasonPhrase :: StatusCode -> [Char]
+  getReasonPhrase (StatusCode _ _ phrase) = phrase
 
   ok = StatusCode Ok 200 "OK"
   notFound = StatusCode NotFound 404 "Not Found"

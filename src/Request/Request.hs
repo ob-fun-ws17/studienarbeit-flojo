@@ -11,6 +11,7 @@ import System.IO as IO
 import Data.List.Split as Split
 import Data.Map as Map
 import qualified Request.RequestLine as RL
+import Data.ByteString.Lazy.Char8 as BS2
 
 data Request = Request {requestLine :: RL.RequestLine, h::[Header]} deriving (Show)
 type Header = (String, [String])
@@ -34,7 +35,6 @@ parseRequest requestString =
   Request requestLine headers
   where
       requestLines = Split.splitOn newLine requestString
-
       requestLine =
           case RL.fromString $ Prelude.head requestLines of
             Right x -> x
@@ -45,8 +45,7 @@ parseToString :: Handle -> IO String
 parseToString handle =
   do r1 <- BSL.hGet handle 1
      rRest <- BSL.hGetNonBlocking handle 1024
-     let result = show $ BSL.append r1 rRest
-     return result
+     return $ BS2.unpack (BSL.append r1 rRest)
 
 parseHeaders :: String -> [Header]
 parseHeaders headers = []
