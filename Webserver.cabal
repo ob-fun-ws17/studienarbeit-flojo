@@ -25,6 +25,7 @@ library
                      , Response.Response
                      , Response.StatusCode
                      , Read
+                     , Server
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
                        network,
                        bytestring,
