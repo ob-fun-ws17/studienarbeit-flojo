@@ -7,12 +7,11 @@ import Response.Response
 import qualified Response.StatusCode as SC
 import Test.Hspec
 import Test.QuickCheck
-import Data.ByteString.Char8 ()
-import qualified Data.ByteString as BS
+import Data.ByteString
 
 v = "HTTP/1.1"
 h = [("Content-Type", ["application/json"])]
-c = "" :: BS.ByteString
+c = ""
 
 res = Response SC.ok v h c
 spec :: Spec
@@ -28,4 +27,4 @@ spec = describe "Response" $ do
       getHeaders res `shouldBe` h
   describe "getVersion" $ do
     it "should return the version" $
-      getVersion res `shouldBe` v    
+      getVersion res `shouldBe` v
