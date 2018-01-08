@@ -12,28 +12,34 @@ import Data.List.Split as Split
 import Data.Map as Map
 import qualified Request.RequestLine as RL
 
-data Request = Request {requestLine :: RL.RequestLine, h::[(String,String)]} deriving (Show)
-
+data Request = Request {requestLine :: RL.RequestLine, h::[Header]} deriving (Show)
+type Header = (String, [String])
 
 method :: Request -> String
 path :: Request -> String
 version :: Request -> String
-headers :: Request -> [(String,String)]
+headers :: Request -> [Header]
 
 method (Request line _) = RL.method line
 path (Request line _) = RL.path line
 version (Request line _) = RL.version line
 headers (Request _ h) = h
 
+newLine = "\\r\\n"
+headerSeparator = ":"
+headerValueSeparator = ";"
+
 parseRequest :: String -> Request
 parseRequest requestString =
   Request requestLine headers
-  where requestLine =
-          case RL.fromString $ getRequestLineString requestString of
+  where
+      requestLines = Split.splitOn newLine requestString
+
+      requestLine =
+          case RL.fromString $ Prelude.head requestLines of
             Right x -> x
-            Left err -> error "Failed"
-        headers = getHeaderTupelList $ getRequestHeaderString requestString
-        l = Split.splitOn "\r\n" requestString
+            Left err -> error $ show err
+      headers = []
 
 parseToString :: Handle -> IO String
 parseToString handle =
@@ -42,19 +48,14 @@ parseToString handle =
      let result = show $ BSL.append r1 rRest
      return result
 
-getRequestLineString :: String -> String
-getRequestLineString request = Prelude.head $ Split.splitOn "\\r\\n" request
+parseHeaders :: String -> [Header]
+parseHeaders headers = []
+  --[parseHeader line | line <- (Split.splitOn newLine headers), h /= newLine]
 
-getRequestHeaderString :: String -> [String]
-getRequestHeaderString request = Prelude.tail $ Split.splitOn "\\r\\n" request
-
-parseHeaders :: String -> [String]
-parseHeaders headers = Split.splitOn "\n" headers
-
-getHeaderTupelList :: [String] -> [(String, String)]
-getHeaderTupelList headers = [toTupel $ Split.splitOn ":" h | h <- headers, Prelude.length h > 1]
-
-toTupel :: [String] -> (String, String)
-toTupel [a,b] = (a,b)
-toTupel [a,b,c] = (a,comb)
-  where comb = b ++ ":" ++ c
+parseHeader :: String -> Header
+parseHeader line =
+  (key, v)
+  where
+    values = Split.splitOn ":" line
+    key = Prelude.head values
+    v = Prelude.tail values

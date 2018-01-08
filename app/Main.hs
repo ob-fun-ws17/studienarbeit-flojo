@@ -3,6 +3,8 @@ module Main where
 
 import Network.Socket
 import Data.ByteString.Lazy as BSL
+import Data.ByteString.Char8 as BS2
+import Network.Socket.ByteString as SockBS
 import System.IO as IO
 import StatusCode
 import Response as R
@@ -42,6 +44,6 @@ run (sock, _) = do
 
   IO.putStr "\nSending message\n"
   IO.putStrLn $ show okLine
-  send sock $ show okLine ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
+  SockBS.send sock $ BS2.pack $ show okLine ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
 
   hClose handle

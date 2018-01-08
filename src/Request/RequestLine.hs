@@ -12,7 +12,6 @@ import Data.List.Split
 import Control.Monad
 
 type ParseMonad = Either ParseError
-
 data RequestLine = RequestLine {m :: String, p :: String, v :: String} deriving (Show, Eq)
 
 method :: RequestLine -> String
@@ -26,6 +25,8 @@ version (RequestLine _ _ v) = v
 
 fromString :: String -> ParseMonad RequestLine
 fromString line = toRequestLine fields
-  where fields = splitOn " " line
-        toRequestLine [m,p,v] = Right $ RequestLine m p v
+  where fields = splitOn "\\s" line
+        toRequestLine ["GET",p,"HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
+        toRequestLine [m, p, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
+        toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported v
         toRequestLine param@_ = Left $ RequestLineMalformed line
