@@ -11,7 +11,7 @@ import Data.ByteString
 
 v = "HTTP/1.1"
 h = [("Content-Type", ["application/json"])]
-c = ""
+c = "This is my response content"
 
 res = Response SC.ok v h c
 spec :: Spec
