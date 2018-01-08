@@ -15,4 +15,4 @@ spec =
         it "should contain the parsed path" $
           show (RequestLineMalformed path) `shouldContain` path
         it "should contain the cause" $
-           show (RequestLineMalformed path) `shouldContain` "was malformed"
+           show (RequestLineMalformed path) `shouldContain` "is not in format \"<METHOD> <PATH> <VERSION>\""
