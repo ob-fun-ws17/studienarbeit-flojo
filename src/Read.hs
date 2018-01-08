@@ -1,22 +1,29 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Read (
-  read
-)
+module Read (read)
 where
+
 import Prelude hiding (read)
+
 import qualified Data.ByteString as BS
+
 import System.Directory
+
 import Control.Monad
 import Control.Exception (catch)
 
-read :: String -> IO (Either IOError BS.ByteString)
+import Response.Error
+
+type E = Either Error
+type FileContents = BS.ByteString
+type RequestResult = Either Error FileContents
+
+read :: String -> IO RequestResult
 read path = catch( do
   result <- BS.readFile path
   return $ Right result
   ) handler
   where
-    handler :: IOError -> IO (Either IOError BS.ByteString)
+    handler :: IOError -> IO RequestResult
     handler ex = do
-      putStrLn $ "Caught exception: " ++ show ex
-      return $ Left ex
+      return $ Left $ FileDoesNotExist $ show ex

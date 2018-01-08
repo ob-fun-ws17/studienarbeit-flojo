@@ -7,7 +7,7 @@ module Response.Response(
     , getContent
 ) where
 import qualified Response.StatusCode as SC
-import Data.ByteString.Char8
+import Data.ByteString
 
 type Header = (String, [String])
 type Headers = [Header]
