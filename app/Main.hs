@@ -6,12 +6,10 @@ import Data.ByteString.Lazy as BSL
 import Data.ByteString.Char8 as BS2
 import Network.Socket.ByteString as SockBS
 import System.IO as IO
-import StatusCode
-import Response as R
+import Response.StatusCode
+import Response.Response as R
 import Request.Request
 port = 8080
-
-okLine = R.ResponseLine "HTTP/1.1" notFound
 
 main :: IO ()
 main  = do
@@ -43,7 +41,6 @@ run (sock, _) = do
   IO.putStrLn $ show request
 
   IO.putStr "\nSending message\n"
-  IO.putStrLn $ show okLine
-  SockBS.send sock $ BS2.pack $ show okLine ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
+  SockBS.send sock $ BS2.pack $ show "HTTP/1.1 200 OK" ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
 
   hClose handle
