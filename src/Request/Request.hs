@@ -51,13 +51,15 @@ parseRequestFromString requestLines =
 parseToString :: Handle -> [BS.ByteString] -> IO [BS.ByteString]
 parseToString handle allLines =
   do line <- BS.hGetLine handle
+     return [line]
+  {-do line <- BS.hGetLine handle
      if line == BS2.pack endOfRequest
         then return allLines
         else do
           Prelude.putStrLn $ BS2.unpack line
           let allLines = allLines ++ [line]
           allLines <- parseToString handle allLines
-          return allLines
+          return allLines-}
 
 parseHeaders :: [BS.ByteString] -> [(BS.ByteString, [BS.ByteString])]
 parseHeaders headers =
