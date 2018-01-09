@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Request.Request (
     parseRequest
   , parseToString
@@ -5,35 +6,32 @@ module Request.Request (
   , Request(..)
 ) where
 
-import Data.ByteString.Lazy as BSL
 import Data.ByteString as BS
 import System.IO as IO
 import Data.List.Split as Split
 import Data.Map as Map
 import qualified Request.RequestLine as RL
-import Data.ByteString.Lazy.Char8 as BS2
+import Data.ByteString.Char8 as BS2
 
-data Request = Request {requestLine :: RL.RequestLine, h::[Header]} deriving (Show)
-type Header = (String, [String])
+data Request = Request {requestLine :: RL.RequestLine, h::[(BS.ByteString, [BS.ByteString])]} deriving (Show)
 
 method :: Request -> BS.ByteString
 path :: Request -> BS.ByteString
 version :: Request -> BS.ByteString
-headers :: Request -> [Header]
+headers :: Request -> [(BS.ByteString, [BS.ByteString])]
 
 method (Request line _) = RL.method line
 path (Request line _) = RL.path line
 version (Request line _) = RL.version line
 headers (Request _ h) = h
 
-newLine = "\\r\\n"
-headerSeparator = ":"
-headerValueSeparator = ";"
-
+endOfRequest = "\r"
+headerSeparator = ':'
 
 parseRequest :: Handle -> IO Request
 parseRequest handle = do
-        requestString <- parseToString handle
+        let list = []
+        requestString <- parseToString handle list
         let request = parseRequestFromString requestString
         return request
 
@@ -47,20 +45,27 @@ parseRequestFromString requestLines =
             Right x -> x
             Left err -> error $ show err
       headers = []
+      --headers = parseHeaders $ Prelude.tail requestLines
 
-parseToString :: Handle -> IO [BS.ByteString]
-parseToString handle =
+parseToString :: Handle -> [BS.ByteString] -> IO [BS.ByteString]
+parseToString handle allLines =
   do line <- BS.hGetLine handle
-     return [line]
+     if line == BS2.pack endOfRequest
+        then return allLines
+        else do
+          Prelude.putStrLn $ BS2.unpack line
+          let allLines = allLines ++ [line]
+          allLines <- parseToString handle allLines
+          return allLines
 
-parseHeaders :: String -> [Header]
-parseHeaders headers = []
-  --[parseHeader line | line <- (Split.splitOn newLine headers), h /= newLine]
+parseHeaders :: [BS.ByteString] -> [(BS.ByteString, [BS.ByteString])]
+parseHeaders headers =
+  [parseHeader line | line <- headers]
 
-parseHeader :: String -> Header
+parseHeader :: BS.ByteString -> (BS.ByteString, [BS.ByteString])
 parseHeader line =
   (key, v)
   where
-    values = Split.splitOn ":" line
+    values = BS2.split headerSeparator line
     key = Prelude.head values
     v = Prelude.tail values

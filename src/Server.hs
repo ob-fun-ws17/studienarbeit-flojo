@@ -34,7 +34,7 @@ where
     request <- parseRequest handle
 
     IO.putStrLn "Got content:"
-    IO.putStrLn $ show request
+    --IO.putStrLn $ show request
 
     IO.putStr "\nSending message\n"
     SockBS.send sock $ BS2.pack $ show "HTTP/1.1 200 OK" ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"

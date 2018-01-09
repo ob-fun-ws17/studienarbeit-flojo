@@ -35,10 +35,3 @@ toRequestLine ["GET", p, "HTTP/1.1\r"] = Right $ RequestLine "GET" p "HTTP/1.1"
 toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
 toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported (BS.append (BS.append (BS.append "GET " p) " ") v)
 toRequestLine [m, p, v] = Left $ RequestLineMalformed (BS.append (BS.append m p) v)
-
-  {-where fields = BS.split " " line
-        toRequestLine fields
-            | fields == ["GET", p ,"HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
-            | fields == [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
-            | fields == ["GET", _, v] = Left $ HttpVersionNotSupported v
-            | otherwiese = Left $ RequestLineMalformed line-}
