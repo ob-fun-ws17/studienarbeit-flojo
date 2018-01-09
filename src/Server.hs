@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Server (
   start
 )
@@ -8,8 +10,9 @@ where
   import Network.Socket.ByteString as SockBS
   import System.IO as IO
   import Response.StatusCode
-  import Response.Response as R
+  import qualified Response.Response as R
   import Request.Request
+  import qualified Read as RD
   start :: PortNumber -> IO ()
   start port =  do
         sock <- socket AF_INET Stream 0    -- create socket
@@ -32,11 +35,14 @@ where
     hSetBuffering handle NoBuffering
 
     request <- parseRequest handle
-
     IO.putStrLn "Got content:"
     IO.putStrLn $ show request
 
     IO.putStr "\nSending message\n"
-    SockBS.send sock $ BS2.pack $ show "HTTP/1.1 200 OK" ++ "\r\nContent-Length: 3\r\nContent-Type: text/plain\r\n\r\nHi!"
 
+    file <- RD.read $ BS2.unpack (path request)
+    case file of
+      Left err -> error $ show err
+      Right c -> sendResponse (BS2.append "HTTP/1.1 200 OK\r\nContent-Length: 3\r\nContent-Type: text/plain\r\nContent-Length: 16\r\n\r\n" c)
+        where sendResponse response = SockBS.send sock response
     hClose handle

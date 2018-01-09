@@ -31,7 +31,7 @@ fromString line = toRequestLine fields
   where fields = Char8.split ' ' line
 
 toRequestLine :: [ByteString] -> ParseMonad RequestLine
-toRequestLine ["GET", p, "HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
+toRequestLine ["GET", p, "HTTP/1.1\r"] = Right $ RequestLine "GET" p "HTTP/1.1"
 toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
 toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported (BS.append (BS.append (BS.append "GET " p) " ") v)
 toRequestLine [m, p, v] = Left $ RequestLineMalformed (BS.append (BS.append m p) v)

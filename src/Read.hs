@@ -14,13 +14,13 @@ import Control.Exception (catch)
 
 import Response.Error
 
-type E = Either Error
 type FileContents = BS.ByteString
 type RequestResult = Either Error FileContents
 
 read :: String -> IO RequestResult
 read path = catch( do
-  result <- BS.readFile path
+  cwd <- getCurrentDirectory
+  result <- BS.readFile $ cwd ++ path
   return $ Right result
   ) handler
   where

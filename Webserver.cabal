@@ -24,6 +24,7 @@ library
                      , Request.Error
                      , Response.Response
                      , Response.StatusCode
+                     , Response.Error
                      , Read
                      , Server
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
@@ -50,6 +51,9 @@ test-suite Webserver-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
+  other-modules:       Request.RequestLineSpec
+                     , Request.ErrorSpec
+                     , Response.ResponseSpec
   build-depends:       base
                      , Webserver
                      , hspec

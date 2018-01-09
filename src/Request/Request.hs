@@ -3,6 +3,7 @@ module Request.Request (
   , parseToString
   , RL.RequestLine()
   , Request(..)
+  , path
 ) where
 
 import Data.ByteString.Lazy as BSL
