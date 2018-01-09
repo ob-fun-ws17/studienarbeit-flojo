@@ -16,9 +16,9 @@ import Data.ByteString.Lazy.Char8 as BS2
 data Request = Request {requestLine :: RL.RequestLine, h::[Header]} deriving (Show)
 type Header = (String, [String])
 
-method :: Request -> String
-path :: Request -> String
-version :: Request -> String
+method :: Request -> BS.ByteString
+path :: Request -> BS.ByteString
+version :: Request -> BS.ByteString
 headers :: Request -> [Header]
 
 method (Request line _) = RL.method line
@@ -30,22 +30,28 @@ newLine = "\\r\\n"
 headerSeparator = ":"
 headerValueSeparator = ";"
 
-parseRequest :: String -> Request
-parseRequest requestString =
+
+parseRequest :: Handle -> IO Request
+parseRequest handle = do
+        requestString <- parseToString handle
+        let request = parseRequestFromString requestString
+        return request
+
+
+parseRequestFromString :: [BS.ByteString] -> Request
+parseRequestFromString requestLines =
   Request requestLine headers
   where
-      requestLines = Split.splitOn newLine requestString
       requestLine =
           case RL.fromString $ Prelude.head requestLines of
             Right x -> x
             Left err -> error $ show err
       headers = []
 
-parseToString :: Handle -> IO String
+parseToString :: Handle -> IO [BS.ByteString]
 parseToString handle =
-  do r1 <- BSL.hGet handle 1
-     rRest <- BSL.hGetNonBlocking handle 1024
-     return $ BS2.unpack (BSL.append r1 rRest)
+  do line <- BS.hGetLine handle
+     return [line]
 
 parseHeaders :: String -> [Header]
 parseHeaders headers = []

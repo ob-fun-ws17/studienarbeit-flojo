@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 module Request.RequestLineSpec (spec) where
 
@@ -11,7 +12,7 @@ import Data.Either.Unwrap
 path = "/my/path"
 get = "GET"
 version = "HTTP/1.1"
-valid = get ++ " " ++ path ++ " " ++ version
+valid = "GET /my/path HTTP/1.1"
 invalid = get
 
 

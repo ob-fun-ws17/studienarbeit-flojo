@@ -3,6 +3,7 @@ module Request.ErrorSpec (spec) where
 
 import Request.Error
 import Test.Hspec
+import Data.ByteString.Char8
 
 spec :: Spec
 
@@ -13,6 +14,6 @@ spec =
     describe "MalformedRequestLine" $ do
       describe "show" $ do
         it "should contain the parsed path" $
-          show (RequestLineMalformed path) `shouldContain` path
+          show (RequestLineMalformed $ pack path) `shouldContain` path
         it "should contain the cause" $
-           show (RequestLineMalformed path) `shouldContain` "is not in format \"<METHOD> <PATH> <VERSION>\""
+          show (RequestLineMalformed $ pack path) `shouldContain` "is not in format \"<METHOD> <PATH> <VERSION>\""

@@ -31,11 +31,8 @@ where
     handle <- socketToHandle sock ReadWriteMode
     hSetBuffering handle NoBuffering
 
-    --parseRequest' handle
+    request <- parseRequest handle
 
-    requestString <- parseToString handle
-
-    let request = parseRequest requestString
     IO.putStrLn "Got content:"
     IO.putStrLn $ show request
 
