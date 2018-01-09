@@ -42,7 +42,8 @@ where
 
     file <- RD.read $ BS2.unpack (path request)
     case file of
-      Left err -> error $ show err
+      Left err -> sendResponse "HTTP/1.1 404 NOT FOUND\r\nContent-Length: 0\r\n\r\n"
+        where sendResponse response = SockBS.send sock response
       Right c -> sendResponse (BS2.append "HTTP/1.1 200 OK\r\nContent-Length: 3\r\nContent-Type: text/plain\r\nContent-Length: 16\r\n\r\n" c)
         where sendResponse response = SockBS.send sock response
     hClose handle

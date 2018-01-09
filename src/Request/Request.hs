@@ -56,7 +56,6 @@ parseToString handle allLines =
      if line == BS2.pack endOfRequest
         then return allLines
         else do
-          Prelude.putStrLn $ BS2.unpack line
           let allLines = allLines ++ [line]
           allLines <- parseToString handle allLines
           return allLines-}
