@@ -36,7 +36,7 @@ where
 
     request <- parseRequest handle
     IO.putStrLn "Got content:"
-    IO.putStrLn $ show request
+    --IO.putStrLn $ show request
 
     IO.putStr "\nSending message\n"
 
