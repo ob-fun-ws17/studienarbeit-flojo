@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Response.Response(
       Response(..)
     , getStatusCode
@@ -5,11 +7,12 @@ module Response.Response(
     , getVersion
     , getHeaders
     , getContent
+    , toByteString
 ) where
 import qualified Response.StatusCode as SC
-import Data.ByteString
+import Data.ByteString.Char8 as BS
 
-type Header = (String, [String])
+type Header = (ByteString, [ByteString])
 type Headers = [Header]
 
 data Response = Response { statusCode :: SC.StatusCode, version :: ByteString, headers :: Headers, content :: ByteString }
@@ -28,3 +31,9 @@ getContent (Response _ _ _ content) = content
 
 getHeaders :: Response -> Headers
 getHeaders (Response _ _ headers _) = headers
+
+toByteString :: Response -> ByteString
+toByteString response = Prelude.foldr append " " [buildResponseLine response, buildContentLength response, "\r\n\r\n", getContent response]
+  where
+    buildResponseLine response = Prelude.foldr append " " [getVersion response, " ",  (pack . show . getStatusCode) response, " ", (pack . show . getReasonPhrase) response, "\r\n"]
+    buildContentLength response =  append "Content-Length: " $ pack . show . BS.length $ getContent response

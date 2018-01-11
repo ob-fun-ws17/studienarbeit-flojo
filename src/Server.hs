@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+ {-# LANGUAGE OverloadedStrings #-}
 
 module Server (
   start
@@ -10,7 +10,7 @@ where
   import Network.Socket.ByteString as SockBS
   import System.IO as IO
   import Response.StatusCode
-  import qualified Response.Response as R
+  import Response.Response as R
   import Request.Request
   import qualified Read as RD
   start :: PortNumber -> IO ()
@@ -44,6 +44,6 @@ where
     case file of
       Left err -> sendResponse "HTTP/1.1 404 NOT FOUND\r\nContent-Length: 0\r\n\r\n"
         where sendResponse response = SockBS.send sock response
-      Right c -> sendResponse (BS2.append "HTTP/1.1 200 OK\r\nContent-Length: 3\r\nContent-Type: text/plain\r\nContent-Length: 16\r\n\r\n" c)
+      Right c -> sendResponse $ toByteString $ Response ok "HTTP/1.1" [] c
         where sendResponse response = SockBS.send sock response
     hClose handle
