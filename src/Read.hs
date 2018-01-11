@@ -7,8 +7,6 @@ import Prelude hiding (read)
 
 import qualified Data.ByteString as BS
 
-import System.Directory
-
 import Control.Monad
 import Control.Exception (catch)
 
@@ -19,8 +17,7 @@ type RequestResult = Either Error FileContents
 
 read :: String -> IO RequestResult
 read path = catch( do
-  cwd <- getCurrentDirectory
-  result <- BS.readFile $ cwd ++ path
+  result <- BS.readFile $ path
   return $ Right result
   ) handler
   where

@@ -10,9 +10,18 @@ where
   import Network.Socket.ByteString as SockBS
   import System.IO as IO
   import Response.StatusCode
+  import Response.Error
   import Response.Response as R
   import Request.Request
   import qualified Read as RD
+  import Data.Map
+
+  config = fromList [("contentRoot", "/home/osboxes")]
+  configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
+  configureRead c path = RD.read $ (c ! "contentRoot") ++ path
+
+  myRead = configureRead config
+
   start :: PortNumber -> IO ()
   start port =  do
         sock <- socket AF_INET Stream 0    -- create socket
@@ -40,7 +49,7 @@ where
 
     IO.putStr "\nSending message\n"
 
-    file <- RD.read $ BS2.unpack (path request)
+    file <- myRead $ BS2.unpack $ path request
     case file of
       Left err -> sendResponse "HTTP/1.1 404 NOT FOUND\r\nContent-Length: 0\r\n\r\n"
         where sendResponse response = SockBS.send sock response
