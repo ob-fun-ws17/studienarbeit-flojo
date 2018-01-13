@@ -1,7 +1,7 @@
  {-# LANGUAGE OverloadedStrings #-}
 
 module Server (
-  configuredStart
+  start
 )
 where
   import Network.Socket
@@ -15,20 +15,36 @@ where
   import Request.Request
   import qualified Read as RD
   import Data.Map
+  import Data.List.Split as Split
 
-  config = fromList [("contentRoot", "/home/osboxes"), ("port", "8080")]
+  defaultConfig = fromList [("contentRoot", "/home/osboxes"), ("port", "8080")]
+
+  start :: String -> IO()
+  start confPath =
+        do conf <- RD.read confPath
+           case conf of
+             Left err -> configurePort defaultConfig
+             Right config -> configurePort $ fillConfMap $ BS2.unpack config
+
+  fillConfMap :: String -> Map String String
+  fillConfMap file = fromList $ [getTupel $ lineList line | line <- allLines]
+          where allLines = Split.splitOn "\n" file
+                getTupel [a,b] = (a, b)
+                getTupel list = ("","")
+                lineList l = Split.splitOn ":" l
+
   configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
   configureRead c path = RD.read $ (c ! "contentRoot") ++ path
 
-  myRead = configureRead config
+  myRead = configureRead defaultConfig
 
   configurePort :: Map String String -> IO ()
-  configurePort conf = start $ read (conf ! "port")
+  configurePort conf = startServer $ read (conf ! "port")
 
-  configuredStart = configurePort config
+  configuredStart = configurePort defaultConfig
 
-  start :: PortNumber -> IO ()
-  start port =  do
+  startServer :: PortNumber -> IO ()
+  startServer port =  do
         sock <- socket AF_INET Stream 0    -- create socket
         setSocketOption sock ReuseAddr 1   -- make socket immediately reusable - eases debugging.
         IO.putStrLn $ "Binding to socket on port " ++ show port

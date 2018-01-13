@@ -1,0 +1,2 @@
+contentRoot:/home/osboxes
+port:8080

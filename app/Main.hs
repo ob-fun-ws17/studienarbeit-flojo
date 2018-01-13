@@ -1,9 +1,9 @@
 
+-- / A Main module
 module Main where
 
 import Server
 
-port = 8080
-
+-- / Start the application
 main :: IO ()
-main  = configuredStart
+main  = start "/home/osboxes/serverconf.txt"
