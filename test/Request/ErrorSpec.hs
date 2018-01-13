@@ -14,6 +14,6 @@ spec =
       describe "show" $ do
         let path = "This is my path"
         it "should contain the parsed path" $
-          RequestLineMalformed path `shouldContain` path
+          (show (RequestLineMalformed path)) `shouldContain` (unpack path)
         it "should contain the cause" $
-          RequestLineMalformed pack path `shouldContain` "is not in format \"<METHOD> <PATH> <VERSION>\""
+          (show $ RequestLineMalformed path) `shouldContain` "is not in format \"<METHOD> <PATH> <VERSION>\""
