@@ -29,7 +29,6 @@ buildNotFoundResponse headers = Response SC.notFound http11 headers
 buildInternalServerErrorResponse :: Headers -> (ByteString -> Response)
 buildInternalServerErrorResponse headers = Response SC.notFound http11 headers
 
-
 data Response = Response { statusCode :: SC.StatusCode, version :: ByteString, headers :: Headers, content :: ByteString }
 
 getStatusCode :: Response -> Integer
