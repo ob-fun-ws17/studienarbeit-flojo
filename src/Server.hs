@@ -65,15 +65,16 @@ where
     hSetBuffering handle NoBuffering
 
     request <- parseRequest handle
-    IO.putStrLn "Got content:"
-    --IO.putStrLn $ show request
-
-    IO.putStr "\nSending message\n"
 
     file <- myRead $ BS2.unpack $ path request
     case file of
-      Left err -> sendResponse "HTTP/1.1 404 NOT FOUND\r\nContent-Length: 0\r\n\r\n"
-        where sendResponse response = SockBS.send sock response
-      Right c -> sendResponse $ toByteString $ Response ok "HTTP/1.1" [] c
-        where sendResponse response = SockBS.send sock response
+      Left err -> sendResponse sock $ buildErrorResponse err
+      Right fileContent -> sendResponse sock $ buildOkResponse fileContent []
     hClose handle
+
+  buildErrorResponse :: Error -> Response
+  buildErrorResponse OtherError = buildInternalServerErrorResponse [("Content-type", ["text/html"])]
+  buildErrorResponse (FileDoesNotExist _) = buildNotFoundResponse [("Content-type", ["text/html"])]
+
+  sendResponse :: Socket -> Response -> IO Int
+  sendResponse sock response = SockBS.send sock $ R.toByteString response
