@@ -5,7 +5,6 @@ module Server (
 )
 where
 import Network.Socket
-import Data.ByteString.Lazy as BSL
 import Data.ByteString.Char8 as BS2
 import Network.Socket.ByteString as SockBS
 import System.IO as IO
@@ -16,7 +15,7 @@ import Request.Request
 import qualified Read as RD
 import Data.Map
 
-config = fromList [("contentRoot", "/home/osboxes"), ("port", "8080")]
+config = fromList [("contentRoot", "htdocs"), ("port", "8080")]
 configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
 configureRead c path = RD.read $ (c ! "contentRoot") ++ path
 myRead = configureRead config
@@ -49,13 +48,25 @@ handleConnection (sock, _) = do
 
     file <- myRead $ BS2.unpack $ path request
     case file of
-      Left err -> sendResponse sock $ buildErrorResponse err
-      Right fileContent -> sendResponse sock $ buildOkResponse fileContent []
+      Left err -> do
+        response <- buildErrorResponse err
+        sendResponse sock response
+      Right fileContent -> sendResponse sock $ (buildOkResponse []) fileContent
     hClose handle
 
-buildErrorResponse :: Error -> Response
-buildErrorResponse OtherError = buildInternalServerErrorResponse [("Content-type", ["text/html"])]
-buildErrorResponse (FileDoesNotExist _) = buildNotFoundResponse [("Content-type", ["text/html"])]
+buildErrorResponse :: Error -> IO Response
+buildErrorResponse OtherError = do
+  responseContent <- myRead "/500.html"
+  return $ someFunc (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
+buildErrorResponse (FileDoesNotExist _) = do
+  responseContent <- myRead "/404.html"
+  return $ someFunc (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
+
+someFunc :: (ByteString -> Response) -> Either Error ByteString -> Response
+someFunc responseTemplate readResult =
+  case readResult of
+    Left _ -> responseTemplate ""
+    Right content -> responseTemplate content
 
 sendResponse :: Socket -> Response -> IO Int
 sendResponse sock response = SockBS.send sock $ R.toByteString response

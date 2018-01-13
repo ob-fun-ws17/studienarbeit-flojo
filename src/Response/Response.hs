@@ -20,14 +20,15 @@ type Headers = [Header]
 
 http11 = "HTTP/1.1"
 
-buildOkResponse :: ByteString -> Headers -> Response
-buildOkResponse fileContents headers = Response SC.ok http11 headers fileContents
+buildOkResponse :: Headers -> (ByteString -> Response)
+buildOkResponse headers = Response SC.ok http11 headers
 
-buildNotFoundResponse :: Headers -> Response
-buildNotFoundResponse headers = Response SC.notFound http11 headers "<html><head><title>Not found</title></head><body>The requested resource is not available</body></html>"
+buildNotFoundResponse :: Headers -> (ByteString -> Response)
+buildNotFoundResponse headers = Response SC.notFound http11 headers
 
-buildInternalServerErrorResponse :: Headers -> Response
-buildInternalServerErrorResponse headers = Response SC.notFound http11 headers ""
+buildInternalServerErrorResponse :: Headers -> (ByteString -> Response)
+buildInternalServerErrorResponse headers = Response SC.notFound http11 headers
+
 
 data Response = Response { statusCode :: SC.StatusCode, version :: ByteString, headers :: Headers, content :: ByteString }
 
