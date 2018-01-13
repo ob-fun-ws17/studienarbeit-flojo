@@ -6,4 +6,4 @@ import Server
 port = 8080
 
 main :: IO ()
-main  = start port
+main  = configuredStart

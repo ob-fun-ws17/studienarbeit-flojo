@@ -1,7 +1,7 @@
  {-# LANGUAGE OverloadedStrings #-}
 
 module Server (
-  start
+  configuredStart
 )
 where
   import Network.Socket
@@ -16,11 +16,16 @@ where
   import qualified Read as RD
   import Data.Map
 
-  config = fromList [("contentRoot", "/home/osboxes")]
+  config = fromList [("contentRoot", "/home/osboxes"), ("port", "8080")]
   configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
   configureRead c path = RD.read $ (c ! "contentRoot") ++ path
 
   myRead = configureRead config
+
+  configurePort :: Map String String -> IO ()
+  configurePort conf = start $ read (conf ! "port")
+
+  configuredStart = configurePort config
 
   start :: PortNumber -> IO ()
   start port =  do
