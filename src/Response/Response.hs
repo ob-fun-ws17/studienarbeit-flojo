@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Response.Response(
       Response(..)
     , getStatusCode
@@ -8,9 +10,10 @@ module Response.Response(
     , buildOkResponse
     , buildNotFoundResponse
     , buildInternalServerErrorResponse
+    , toByteString
 ) where
-import Response.StatusCode as SC
-import Data.ByteString
+import qualified Response.StatusCode as SC
+import Data.ByteString.Char8 as BS
 
 type Header = (String, [String])
 type Headers = [Header]
@@ -18,13 +21,13 @@ type Headers = [Header]
 http11 = "HTTP/1.1"
 
 buildOkResponse :: ByteString -> Headers -> Response
-buildOkResponse fileContents headers = Response ok http11 headers fileContents
+buildOkResponse fileContents headers = Response SC.ok http11 headers fileContents
 
-buildNotFoundResposne :: Headers -> Response
-buildNotFoundResponse headers = Response notFound http11 headers ""
+buildNotFoundResponse :: Headers -> Response
+buildNotFoundResponse headers = Response SC.notFound http11 headers "<html><head><title>Not found</title></head><body>The requested resource is not available</body></html>"
 
 buildInternalServerErrorResponse :: Headers -> Response
-buildInternalServerErrorResponse headers = Response notFound http11 headers ""
+buildInternalServerErrorResponse headers = Response SC.notFound http11 headers ""
 
 data Response = Response { statusCode :: SC.StatusCode, version :: ByteString, headers :: Headers, content :: ByteString }
 
@@ -44,11 +47,7 @@ getHeaders :: Response -> Headers
 getHeaders (Response _ _ headers _) = headers
 
 toByteString :: Response -> ByteString
-toByteString response = buildResponseLine request
-
-buildResponseLine request = append (append (pack (version request)) (append (pack (getStatusCode response) (pack (getReasonPhrase response))) "\r\n"
-
-buildHeaders (++)
-buildHeader (k, [b]) = append (append (append k ": ") v) "\r\n"
-buildHeader h = buildHeader
-getContentLength response = ["Content-Length", [length $ getContent response])
+toByteString response = Prelude.foldr append " " [buildResponseLine response, buildContentLength response, "\r\n\r\n", getContent response]
+  where
+    buildResponseLine response = Prelude.foldr append " " [getVersion response, " ",  (pack . show . getStatusCode) response, " ", (pack . show . getReasonPhrase) response, "\r\n"]
+    buildContentLength response =  append "Content-Length: " $ BS.pack . show . BS.length $ getContent response
