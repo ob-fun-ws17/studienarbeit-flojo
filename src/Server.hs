@@ -1,7 +1,7 @@
  {-# LANGUAGE OverloadedStrings #-}
 
 module Server (
-  configuredStart
+  start
 )
 where
   import Network.Socket
@@ -16,16 +16,13 @@ where
   import qualified Read as RD
   import Data.Map
 
-  config = fromList [("contentRoot", "/home/osboxes"), ("port", "8080")]
+  config = fromList [("contentRoot", "/home/osboxes")]
   configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
   configureRead c path = RD.read $ (c ! "contentRoot") ++ path
 
+  configurePort :: Map String String -> String ->
+
   myRead = configureRead config
-
-  configurePort :: Map String String -> IO ()
-  configurePort conf = start $ read (conf ! "port")
-
-  configuredStart = configurePort config
 
   start :: PortNumber -> IO ()
   start port =  do
@@ -56,8 +53,13 @@ where
 
     file <- myRead $ BS2.unpack $ path request
     case file of
-      Left err -> sendResponse "HTTP/1.1 404 NOT FOUND\r\nContent-Length: 0\r\n\r\n"
-        where sendResponse response = SockBS.send sock response
-      Right c -> sendResponse $ toByteString $ Response ok "HTTP/1.1" [] c
-        where sendResponse response = SockBS.send sock response
+      Left err -> sendResponse $ buildNotFoundResponse []
+      Right fileContent ->  sendResponse builfileContent
     hClose handle
+
+buildErrorResponse :: Error -> Response
+buildErrorResponse OtherError -> buildInternalServerErrorResponse []
+buildErrorResponse FileDoesNotExist _ -> buildNotFoundResponse []
+
+sendResponse :: Socket -> Response -> IO ()
+sendResponse response => SockBS.send sock response

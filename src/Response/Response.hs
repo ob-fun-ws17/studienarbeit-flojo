@@ -1,5 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Response.Response(
       Response(..)
     , getStatusCode
@@ -7,13 +5,26 @@ module Response.Response(
     , getVersion
     , getHeaders
     , getContent
-    , toByteString
+    , buildOkResponse
+    , buildNotFoundResponse
+    , buildInternalServerErrorResponse
 ) where
-import qualified Response.StatusCode as SC
-import Data.ByteString.Char8 as BS
+import Response.StatusCode as SC
+import Data.ByteString
 
-type Header = (ByteString, [ByteString])
+type Header = (String, [String])
 type Headers = [Header]
+
+http11 = "HTTP/1.1"
+
+buildOkResponse :: ByteString -> Headers -> Response
+buildOkResponse fileContents headers = Response ok http11 headers fileContents
+
+buildNotFoundResposne :: Headers -> Response
+buildNotFoundResponse headers = Response notFound http11 headers ""
+
+buildInternalServerErrorResponse :: Headers -> Response
+buildInternalServerErrorResponse headers = Response notFound http11 headers ""
 
 data Response = Response { statusCode :: SC.StatusCode, version :: ByteString, headers :: Headers, content :: ByteString }
 
@@ -33,7 +44,11 @@ getHeaders :: Response -> Headers
 getHeaders (Response _ _ headers _) = headers
 
 toByteString :: Response -> ByteString
-toByteString response = Prelude.foldr append " " [buildResponseLine response, buildContentLength response, "\r\n\r\n", getContent response]
-  where
-    buildResponseLine response = Prelude.foldr append " " [getVersion response, " ",  (pack . show . getStatusCode) response, " ", (pack . show . getReasonPhrase) response, "\r\n"]
-    buildContentLength response =  append "Content-Length: " $ pack . show . BS.length $ getContent response
+toByteString response = buildResponseLine request
+
+buildResponseLine request = append (append (pack (version request)) (append (pack (getStatusCode response) (pack (getReasonPhrase response))) "\r\n"
+
+buildHeaders (++)
+buildHeader (k, [b]) = append (append (append k ": ") v) "\r\n"
+buildHeader h = buildHeader
+getContentLength response = ["Content-Length", [length $ getContent response])

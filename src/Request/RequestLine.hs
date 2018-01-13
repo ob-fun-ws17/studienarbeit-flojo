@@ -14,6 +14,7 @@ import Control.Monad
 import Data.ByteString as BS
 import Data.ByteString.Char8 as Char8
 
+
 type ParseMonad = Either ParseError
 data RequestLine = RequestLine {m :: ByteString, p :: ByteString, v :: ByteString} deriving (Show, Eq)
 
