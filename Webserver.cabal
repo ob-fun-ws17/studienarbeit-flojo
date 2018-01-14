@@ -27,6 +27,7 @@ library
                      , Response.Error
                      , Read
                      , Server
+                     , Request.Internal.Request
   build-depends:       base >= 4.7 && < 5, ghc-prim, deepseq,
                        network,
                        bytestring,
@@ -54,6 +55,7 @@ test-suite Webserver-test
   other-modules:       Request.RequestLineSpec
                      , Request.ErrorSpec
                      , Response.ResponseSpec
+                     , Request.RequestSpec
   build-depends:       base
                      , Webserver
                      , hspec
