@@ -20,3 +20,4 @@ install:
 
 script:
 - stack -j 2 build --no-terminal
+- stack -j 2 test --no-terminal

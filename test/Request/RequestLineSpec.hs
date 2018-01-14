@@ -7,16 +7,17 @@ import Request.Error
 import Test.Hspec
 import Test.QuickCheck
 import Data.Either.Unwrap
+import Data.ByteString.Char8 as BS
 
 
 path = "/my/path"
 get = "GET"
 version = "HTTP/1.1"
-valid = "GET /my/path HTTP/1.1"
+valid = "GET /my/path HTTP/1.1\r"
 invalid = get
 
 
-validLine = RL.fromString valid
+validLine = RL.fromString $ valid
 invalidLine = RL.fromString invalid
 
 justResult :: (Either b0 RL.RequestLine) -> RL.RequestLine
