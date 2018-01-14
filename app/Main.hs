@@ -6,4 +6,4 @@ import Server
 
 -- / Start the application
 main :: IO ()
-main  = start "/home/osboxes/serverconf.txt"
+main  = start "webby.cfg"

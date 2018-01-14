@@ -1,3 +1,4 @@
+-- | Response errors.
 module Response.Error (
   Error(..)
 ) where

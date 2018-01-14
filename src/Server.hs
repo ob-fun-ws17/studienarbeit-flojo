@@ -17,14 +17,24 @@ import qualified Read as RD
 import Data.Map
 import Data.List.Split as Split
 
-defaultConfig = fromList [("contentRoot", "htdocs"), ("port", "8080")]
+type ReadResult = Either Error ByteString
 
 start :: String -> IO()
 start confPath =
    do conf <- RD.read confPath
       case conf of
-          Left err -> configurePort defaultConfig
-          Right config -> configurePort $ fillConfMap $ BS2.unpack config
+          Left err -> do
+            IO.putStrLn $ "Started with default config"
+            startServer port readWithCRoot
+              where
+                port = 8080
+                readWithCRoot = configureContentRoot "htdocs"
+          Right config -> do
+            BS2.putStrLn $ BS2.append "Started with config:\n\n" config
+            startServer (port config) (readWithCRoot config)
+               where parsedConfig cfg = fillConfMap $ BS2.unpack cfg
+                     port cfg = getPort $ parsedConfig cfg
+                     readWithCRoot cfg = configureContentRoot $ getContentRoot $ parsedConfig cfg
 
 fillConfMap :: String -> Map String String
 fillConfMap file = fromList $ [getTupel $ lineList line | line <- allLines]
@@ -33,59 +43,64 @@ fillConfMap file = fromList $ [getTupel $ lineList line | line <- allLines]
          getTupel list = ("","")
          lineList l = Split.splitOn ":" l
 
-configureRead :: Map String String -> String -> IO (Either Error BS2.ByteString)
-configureRead c path = RD.read $ (c ! "contentRoot") ++ path
+configureContentRoot :: String -> String -> IO ReadResult
+configureContentRoot root path = RD.read $ root ++ path
 
-myRead = configureRead defaultConfig
+getPort :: Map String String -> PortNumber
+getPort conf = read $ conf ! "port"
 
-configurePort :: Map String String -> IO ()
-configurePort conf = startServer $ read (conf ! "port")
+getContentRoot :: Map String String -> String
+getContentRoot conf = conf ! "contentRoot"
 
-configuredStart = configurePort defaultConfig
-
-startServer :: PortNumber -> IO ()
-startServer port =  do
+startServer :: PortNumber
+                -> (String -> IO ReadResult)
+                -> IO ()
+startServer port rd =  do
     sock <- socket AF_INET Stream 0    -- create socket
+
     setSocketOption sock ReuseAddr 1   -- make socket immediately reusable - eases debugging.
-    IO.putStrLn $ "Binding to socket on port " ++ show port
+    IO.putStrLn $ "Started on port " ++ show port
     bind sock (SockAddrInet port iNADDR_ANY)   -- listen on TCP port 4242.
     listen sock 2                              -- set a max of 2 queued connections
-    mainLoop sock
+    mainLoop sock rd
 
-mainLoop :: Socket -> IO()
-mainLoop sock = do
+mainLoop :: Socket -> (String -> IO ReadResult) -> IO()
+mainLoop sock rd = do
     conn <- accept sock
-    handleConnection conn
-    mainLoop sock
+    handleConnection conn rd
+    mainLoop sock rd
 
-handleConnection :: (Socket, SockAddr) -> IO()
-handleConnection (sock, _) = do
+handleConnection :: (Socket, SockAddr) -> (String -> IO ReadResult) -> IO()
+handleConnection (sock, _) rd = do
     handle <- socketToHandle sock ReadWriteMode
     hSetBuffering handle NoBuffering
 
     request <- parseRequest handle
 
-    file <- myRead $ BS2.unpack $ path request
+    file <- rd $ BS2.unpack $ path request
     case file of
       Left err -> do
-        response <- buildErrorResponse err
+        response <- buildErrorResponse err rd
         sendResponse sock response
       Right fileContent -> sendResponse sock $ (buildOkResponse []) fileContent
     hClose handle
 
-buildErrorResponse :: Error -> IO Response
-buildErrorResponse OtherError = do
-  responseContent <- myRead "/500.html"
-  return $ someFunc (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
-buildErrorResponse (FileDoesNotExist _) = do
-  responseContent <- myRead "/404.html"
-  return $ someFunc (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
+-- | Build a response resulting in a non-success status code.
+buildErrorResponse :: Error -> (String -> IO ReadResult) -> IO Response
+buildErrorResponse OtherError rd = do
+  responseContent <- rd "/500.html"
+  return $ withFileContent (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
+buildErrorResponse (FileDoesNotExist _) rd = do
+  responseContent <- rd "/404.html"
+  return $ withFileContent (buildNotFoundResponse [("Content-type", ["text/html"])]) responseContent
 
-someFunc :: (ByteString -> Response) -> Either Error ByteString -> Response
-someFunc responseTemplate readResult =
+-- | Write the content to the response. When file reading faulted, default to empty string.
+withFileContent :: (ByteString -> Response) -> ReadResult -> Response
+withFileContent responseTemplate readResult =
   case readResult of
     Left _ -> responseTemplate ""
     Right content -> responseTemplate content
 
+-- | Send the response.
 sendResponse :: Socket -> Response -> IO Int
 sendResponse sock response = SockBS.send sock $ R.toByteString response

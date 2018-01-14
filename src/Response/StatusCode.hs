@@ -1,3 +1,4 @@
+-- | This module describes HTTP status codes.
 module Response.StatusCode (
     StatusCode(..)
   , Code
@@ -7,14 +8,19 @@ module Response.StatusCode (
   , notFound
 ) where
 
-  data Code = Continue | NotFound | Ok
-  data StatusCode = StatusCode { code :: Code, statusCode :: Integer, reasonPharse :: [Char]}
+data Code = Continue | NotFound | Ok
 
-  getStatusCode :: StatusCode -> Integer
-  getStatusCode (StatusCode _ value _) = value
+-- | Represents an HTTP StatusCode
+data StatusCode = StatusCode { code :: Code, statusCode :: Integer, reasonPharse :: [Char]}
 
-  getReasonPhrase :: StatusCode -> [Char]
-  getReasonPhrase (StatusCode _ _ phrase) = phrase
+-- | Extract the numeric status code from a StatusCode
+getStatusCode :: StatusCode -> Integer
+getStatusCode (StatusCode _ value _) = value
 
-  ok = StatusCode Ok 200 "OK"
-  notFound = StatusCode NotFound 404 "Not Found"
+-- | Extract the reason pharse from a StatusCode
+getReasonPhrase :: StatusCode -> [Char]
+getReasonPhrase (StatusCode _ _ phrase) = phrase
+
+
+ok = StatusCode Ok 200 "OK"
+notFound = StatusCode NotFound 404 "Not Found"
