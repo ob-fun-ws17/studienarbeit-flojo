@@ -43,3 +43,4 @@ toRequestLine ["GET", p, "HTTP/1.1\r"] = Right $ RequestLine "GET" p "HTTP/1.1"
 toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
 toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported (BS.append (BS.append (BS.append "GET " p) " ") v)
 toRequestLine [m, p, v] = Left $ RequestLineMalformed (BS.append (BS.append m p) v)
+toRequestLine _ = Left $ UnknownParseError ""
