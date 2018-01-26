@@ -47,7 +47,7 @@ fromString line = toRequestLine fields
 
 -- | Pattern matching for finding malformed requests.
 toRequestLine :: [ByteString] -> ParseMonad RequestLine
-toRequestLine ["GET", p, "HTTP/1.1\r"] = Right $ RequestLine "GET" p "HTTP/1.1"
+toRequestLine ["GET", p, "HTTP/1.1"] = Right $ RequestLine "GET" p "HTTP/1.1"
 toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
 toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported (BS.append (BS.append (BS.append "GET " p) " ") v)
 toRequestLine [m, p, v] = Left $ RequestLineMalformed (BS.append (BS.append m p) v)
@@ -63,20 +63,16 @@ parseRequestFromString requestLines =
             Right x -> x
             Left err -> error $ show err
       headers = []
-      --headers = parseHeaders $ Prelude.tail requestLines
 
 -- | parses the request from a handle line by line to a list of bytesstrings.
 parseToString :: Handle -> [BS.ByteString] -> IO [BS.ByteString]
 parseToString handle allLines =
-  do line <- BS.hGetLine handle
-     return [line]
-  {-do line <- BS.hGetLine handle
-     if line == BS2.pack endOfRequest
-        then return allLines
-        else do
-          let allLines = allLines ++ [line]
-          allLines <- parseToString handle allLines
-          return allLines-}
+  do line <- IO.hGetContents handle
+     let lineList = splitLines line
+     return lineList
+
+splitLines :: String -> [ByteString]
+splitLines string = Prelude.map BS2.pack (splitOn "\r\n" string)
 
 -- | parses the headers from a list of bytestrings, that contain the lines.
 parseHeaders :: [BS.ByteString] -> [(BS.ByteString, [BS.ByteString])]

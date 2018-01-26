@@ -12,7 +12,7 @@ import Request.Internal.Request as Req
 requestPath = "/my/path"
 requestGet = "GET"
 requestVersion = "HTTP/1.1"
-validRequestString = [BS.pack "GET /some/url HTTP/1.1\r"]
+validRequestString = [BS.pack "GET /some/url HTTP/1.1"]
 requestHeaders = [("header1", ["someValue"])]
 
 header = BS.pack "header1:value1"

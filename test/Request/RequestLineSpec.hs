@@ -13,7 +13,7 @@ import Request.Internal.Request
 testPath = "/my/path"
 testMethod = "GET"
 testVersion = "HTTP/1.1"
-valid = "GET /my/path HTTP/1.1\r"
+valid = "GET /my/path HTTP/1.1"
 invalid = testMethod
 
 
