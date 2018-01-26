@@ -6,39 +6,27 @@ module Request.Internal.Request (
   , parseToString
   , parseHeaders
   , parseHeader
-  , method
-  , version
-  , path
-  , headers
+  , fromString
   , Request(..)
+  , RequestLine(..)
 )
 where
 
+import Request.Error
+import Control.Monad
 import Data.ByteString as BS
 import System.IO as IO
 import Data.List.Split as Split
 import Data.Map as Map
-import qualified Request.RequestLine as RL
 import Data.ByteString.Char8 as BS2
 
+-- | Monad for error handling while parsing a request.
+type ParseMonad = Either ParseError
+
 -- | The constructor of the request. A request contains a requestline (methond, path and http-version) and a list of headers.
-data Request = Request {requestLine :: RL.RequestLine, h::[(BS.ByteString, [BS.ByteString])]} deriving (Show, Eq)
+data Request = Request {requestLine::RequestLine, headers::[(BS.ByteString, [BS.ByteString])]} deriving (Show, Eq)
 
--- | function, to get the method of a request.
-method :: Request -> BS.ByteString
-method (Request line _) = RL.method line
-
--- | funtion, to get the path of a request.
-path :: Request -> BS.ByteString
-path (Request line _) = RL.path line
-
--- | function, to get the http-version of a request.
-version :: Request -> BS.ByteString
-version (Request line _) = RL.version line
-
--- ¦ function, to get the list of headers from a request.
-headers :: Request -> [(BS.ByteString, [BS.ByteString])]
-headers (Request _ h) = h
+data RequestLine = RequestLine {method :: ByteString, path :: ByteString, version :: ByteString} deriving (Show, Eq)
 
 endOfRequest = "\r"
 headerSeparator = ':'
@@ -51,13 +39,27 @@ parseRequest handle = do
         let request = parseRequestFromString requestString
         return request
 
+
+-- | Top level function for parsing a byteString to a RequestLine.
+fromString :: ByteString -> ParseMonad RequestLine
+fromString line = toRequestLine fields
+  where fields = BS2.split ' ' line
+
+-- | Pattern matching for finding malformed requests.
+toRequestLine :: [ByteString] -> ParseMonad RequestLine
+toRequestLine ["GET", p, "HTTP/1.1\r"] = Right $ RequestLine "GET" p "HTTP/1.1"
+toRequestLine [m, _, "HTTP/1.1"] = Left $ HttpMethodNotSupported m
+toRequestLine ["GET", p, v] = Left $ HttpVersionNotSupported (BS.append (BS.append (BS.append "GET " p) " ") v)
+toRequestLine [m, p, v] = Left $ RequestLineMalformed (BS.append (BS.append m p) v)
+toRequestLine _ = Left $ UnknownParseError ""
+
 -- | Parses a request from a bytestring.
 parseRequestFromString :: [BS.ByteString] -> Request
 parseRequestFromString requestLines =
   Request requestLine headers
   where
       requestLine =
-          case RL.fromString $ Prelude.head requestLines of
+          case fromString $ Prelude.head requestLines of
             Right x -> x
             Left err -> error $ show err
       headers = []

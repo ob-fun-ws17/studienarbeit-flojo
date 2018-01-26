@@ -2,7 +2,6 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module Request.RequestSpec (spec) where
 
-import Request.RequestLine as RL
 import Request.Error
 import Test.Hspec
 import Test.QuickCheck
@@ -30,13 +29,13 @@ spec =
   describe "request" $ do
     describe "path" $ do
       it "should extract the path" $
-        (Req.path request) `shouldBe` requestPath
+        (path $ requestLine request) `shouldBe` requestPath
     describe "method" $ do
       it "should extract the method" $
-        (Req.method request) `shouldBe` requestGet
+        (method $ requestLine request) `shouldBe` requestGet
     describe "version" $ do
       it "should extract the version" $
-        (Req.version request) `shouldBe` requestVersion
+        (version $ requestLine request) `shouldBe` requestVersion
     describe "headers" $ do
       it "should extract the headers" $
         (Req.headers request) `shouldBe` requestHeaders

@@ -2,42 +2,42 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module Request.RequestLineSpec (spec) where
 
-import qualified Request.RequestLine as RL
 import Request.Error
 import Test.Hspec
 import Test.QuickCheck
 import Data.Either.Unwrap
 import Data.ByteString.Char8 as BS
+import Request.Internal.Request
 
 
-path = "/my/path"
-get = "GET"
-version = "HTTP/1.1"
+testPath = "/my/path"
+testMethod = "GET"
+testVersion = "HTTP/1.1"
 valid = "GET /my/path HTTP/1.1\r"
-invalid = get
+invalid = testMethod
 
 
-validLine = RL.fromString $ valid
-invalidLine = RL.fromString invalid
+validLine = fromString $ valid
+invalidLine = fromString invalid
 
-justResult :: (Either b0 RL.RequestLine) -> RL.RequestLine
-justResult line = either (const $ RL.RequestLine "" "" "") id line
-defaultResult = RL.RequestLine "a" "b" "c"
+justResult :: (Either b0 RequestLine) -> RequestLine
+justResult line = either (const $ RequestLine "" "" "") id line
+defaultResult = RequestLine "a" "b" "c"
 
 spec :: Spec
 spec =
   describe "requestLine" $ do
     describe "fromString" $ do
       it "should parse a valid line" $
-        (justResult validLine) `shouldBe` (RL.RequestLine get path version)
+        (justResult validLine) `shouldBe` (RequestLine testMethod testPath testVersion)
       it "should not parse an invalid line" $
         (isLeft invalidLine) `shouldBe` True
     describe "path" $ do
       it "should extract the path" $
-        (RL.path $ justResult validLine) `shouldBe` path
+        (path $ justResult validLine) `shouldBe` testPath
     describe "method" $ do
       it "should extract the method" $
-        (RL.method $ justResult validLine) `shouldBe` get
+        (method $ justResult validLine) `shouldBe` testMethod
     describe "version" $ do
       it "should extract the version" $
-        (RL.version $ justResult validLine) `shouldBe` version
+        (version $ justResult validLine) `shouldBe` testVersion

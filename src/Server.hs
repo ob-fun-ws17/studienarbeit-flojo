@@ -12,7 +12,7 @@ import System.IO as IO
 import Response.StatusCode
 import Response.Error
 import Response.Response as R
-import Request.Request
+import Request.Request as Request
 import qualified Read as RD
 import Data.Map
 import Data.List.Split as Split
@@ -77,7 +77,7 @@ handleConnection (sock, _) rd = do
 
     request <- parseRequest handle
 
-    file <- rd $ BS2.unpack $ path request
+    file <- rd $ BS2.unpack $ path (requestLine request)
     case file of
       Left err -> do
         response <- buildErrorResponse err rd
