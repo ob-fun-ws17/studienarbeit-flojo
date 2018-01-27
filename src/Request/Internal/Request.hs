@@ -26,6 +26,7 @@ type ParseMonad = Either ParseError
 -- | The constructor of the request. A request contains a requestline (methond, path and http-version) and a list of headers.
 data Request = Request {requestLine::RequestLine, headers::[(BS.ByteString, [BS.ByteString])]} deriving (Show, Eq)
 
+-- ¦ The construcor for a request line. It contains the fields method, path and version.
 data RequestLine = RequestLine {method :: ByteString, path :: ByteString, version :: ByteString} deriving (Show, Eq)
 
 endOfRequest = "\r"
@@ -62,7 +63,7 @@ parseRequestFromString requestLines =
           case fromString $ Prelude.head requestLines of
             Right x -> x
             Left err -> error $ show err
-      headers = []
+      headers = parseHeaders $ Prelude.tail requestLines
 
 -- | parses the request from a handle line by line to a list of bytesstrings.
 parseToString :: Handle -> [BS.ByteString] -> IO [BS.ByteString]
@@ -71,6 +72,7 @@ parseToString handle allLines =
      let lineList = splitLines line
      return lineList
 
+-- | splits a request-string into a list, each entry being a line of the request.
 splitLines :: String -> [ByteString]
 splitLines string = Prelude.map BS2.pack (splitOn "\r\n" string)
 
