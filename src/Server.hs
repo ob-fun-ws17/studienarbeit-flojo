@@ -1,5 +1,5 @@
  {-# LANGUAGE OverloadedStrings #-}
-
+-- | This module represents the webserver.
 module Server (
   start
 )
@@ -19,6 +19,7 @@ import Data.List.Split as Split
 
 type ReadResult = Either Error ByteString
 
+-- | Start the server with a path to a config file.
 start :: String -> IO()
 start confPath =
    do conf <- RD.read confPath
