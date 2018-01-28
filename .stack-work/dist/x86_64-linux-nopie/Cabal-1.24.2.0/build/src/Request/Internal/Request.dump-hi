@@ -1,0 +1,1021 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-27 15:15:02.533699252 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Request.Internal.Request 8002
+  interface hash: c7eff188434a9f7d9e6763996c0dfbaf
+  ABI hash: 580015054337672e046a010af5d98082
+  export-list hash: c9aa959cc77e45ac38ac07855cc66456
+  orphan hash: 0e2568eb9edd3cba7eb933a9e94ca28c
+  flag hash: 247c7378d33925630511912733f3c95e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Request.Internal.Request.fromString
+  Request.Internal.Request.parseHeader
+  Request.Internal.Request.parseHeaders
+  Request.Internal.Request.parseRequest
+  Request.Internal.Request.parseRequestFromString
+  Request.Internal.Request.parseToString
+  Request.Internal.Request.Request{Request.Internal.Request.Request headers requestLine}
+  Request.Internal.Request.RequestLine{Request.Internal.Request.RequestLine method path version}
+module dependencies: Request.Error
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
+                      bytestring-0.10.8.1@bytestring-0.10.8.1*
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+                      split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+import  -/  Request.Error 4ce3a973f4d8229f6de05c9c8e14016d
+  exports: 4f6358a5c4666543c80383d5c705a575
+  HttpMethodNotSupported 3109d44c46e0f3376963ff4f669240a6
+  HttpVersionNotSupported 684c5fe0d13e2963683c2b5a355b13ec
+  ParseError 59075d3332e880d0f3945bbb6d8cc0fd
+  RequestLineMalformed 8813284f9b67840f6cda0963ce296462
+  UnknownParseError f3b2b3e1dfab2b33ddfb42051f66097c
+import  -/  base-4.9.1.0:Control.Monad a6784c5dab0d75c63dabec5a37843f98
+import  -/  base-4.9.1.0:Data.Either 20b09ef8d0a5b74fdec011c40c1587f5
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Err 3bba35a16538d33d424682ce66876cdd
+import  -/  base-4.9.1.0:GHC.IO.Handle.Text b65719f3b262b071ab1aabeb72fc9d8b
+import  -/  base-4.9.1.0:GHC.IO.Handle.Types 17aa0e2ab137800e3a31992d780c071f
+import  -/  base-4.9.1.0:GHC.List ab8c4e523e6c479c549d3bcd5fc4a439
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.IO e4a64a8e3dce8616da54f0ee7104f7db
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString 43e99fdac51908da414a28958688da64
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Char8 64661030f691dd1495e363eeda7a5344
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Internal 89cda42ec946d9d6577dd41ab95d523e
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 20d4ffbee41965d03d6a989425473dc4
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+import  -/  split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT:Data.List.Split 272c5cfa667e04d85d90f02a3d135474
+import  -/  split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT:Data.List.Split.Internals be3228c161b442fb4a76d9ed8518c1ed
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fEqRequest :: GHC.Classes.Eq Request.Internal.Request.Request
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Internal.Request.Request
+                  Request.Internal.Request.$fEqRequest_$c==
+                  Request.Internal.Request.$fEqRequest_$c/= -}
+a424c88000eba6a94d8e20c805a22a7e
+  $fEqRequest1 ::
+    GHC.Classes.Eq [Data.ByteString.Internal.ByteString]
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Request.Internal.Request.$fEqRequest_$s$fEq[] -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fEqRequestLine ::
+    GHC.Classes.Eq Request.Internal.Request.RequestLine
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Internal.Request.RequestLine
+                  Request.Internal.Request.$fEqRequestLine_$c==
+                  Request.Internal.Request.$fEqRequestLine_$c/= -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fEqRequestLine_$c/= ::
+    Request.Internal.Request.RequestLine
+    -> Request.Internal.Request.RequestLine -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(LLLS)LL),1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))><S(S(LLLS)LL),1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Request.Internal.Request.RequestLine)
+                   (b :: Request.Internal.Request.RequestLine) ->
+                 case Request.Internal.Request.$fEqRequestLine_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fEqRequestLine_$c== ::
+    Request.Internal.Request.RequestLine
+    -> Request.Internal.Request.RequestLine -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(LLLS)LL),1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))><S(S(LLLS)LL),1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Request.Internal.Request.RequestLine)
+                   (w1 :: Request.Internal.Request.RequestLine) ->
+                 case w of ww { Request.Internal.Request.RequestLine ww1 ww2 ww3 ->
+                 case ww1 of ww4 { Data.ByteString.Internal.PS ww5 ww6 ww7 ww8 ->
+                 case w1 of ww9 { Request.Internal.Request.RequestLine ww10 ww11 ww12 ->
+                 case ww10 of ww13 { Data.ByteString.Internal.PS ww14 ww15 ww16 ww17 ->
+                 Request.Internal.Request.$w$c==1
+                   ww5
+                   ww6
+                   ww7
+                   ww8
+                   ww2
+                   ww3
+                   ww14
+                   ww15
+                   ww16
+                   ww17
+                   ww11
+                   ww12 } } } }) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fEqRequest_$c/= ::
+    Request.Internal.Request.Request
+    -> Request.Internal.Request.Request -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S(LLLS)LL)L),1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)><S(S(S(LLLS)LL)L),1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Request.Internal.Request.Request)
+                   (b :: Request.Internal.Request.Request) ->
+                 case Request.Internal.Request.$fEqRequest_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fEqRequest_$c== ::
+    Request.Internal.Request.Request
+    -> Request.Internal.Request.Request -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(S(S(LLLS)LL)L),1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)><S(S(S(LLLS)LL)L),1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Request.Internal.Request.Request)
+                   (w1 :: Request.Internal.Request.Request) ->
+                 case w of ww { Request.Internal.Request.Request ww1 ww2 ->
+                 case ww1 of ww3 { Request.Internal.Request.RequestLine ww4 ww5 ww6 ->
+                 case ww4 of ww7 { Data.ByteString.Internal.PS ww8 ww9 ww10 ww11 ->
+                 case w1 of ww12 { Request.Internal.Request.Request ww13 ww14 ->
+                 case ww13 of ww15 { Request.Internal.Request.RequestLine ww16 ww17 ww18 ->
+                 case ww16 of ww19 { Data.ByteString.Internal.PS ww20 ww21 ww22 ww23 ->
+                 Request.Internal.Request.$w$c==
+                   ww8
+                   ww9
+                   ww10
+                   ww11
+                   ww5
+                   ww6
+                   ww2
+                   ww20
+                   ww21
+                   ww22
+                   ww23
+                   ww17
+                   ww18
+                   ww14 } } } } } }) -}
+76eb04aab277d372586cf3e338560e46
+  $fEqRequest_$s$fEq(,) ::
+    GHC.Classes.Eq
+      (Data.ByteString.Internal.ByteString,
+       [Data.ByteString.Internal.ByteString])
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Data.ByteString.Internal.ByteString,
+                     [Data.ByteString.Internal.ByteString])
+                  (GHC.Classes.$fEq(,)_$c==
+                     @ Data.ByteString.Internal.ByteString
+                     @ [Data.ByteString.Internal.ByteString]
+                     Data.ByteString.Internal.$fEqByteString
+                     Request.Internal.Request.$fEqRequest1)
+                  (GHC.Classes.$fEq(,)_$c/=
+                     @ Data.ByteString.Internal.ByteString
+                     @ [Data.ByteString.Internal.ByteString]
+                     Data.ByteString.Internal.$fEqByteString
+                     Request.Internal.Request.$fEqRequest1) -}
+eb9e461396974f044ed937723ca237e6
+  $fEqRequest_$s$fEq[] ::
+    GHC.Classes.Eq [Data.ByteString.Internal.ByteString]
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ [Data.ByteString.Internal.ByteString]
+                  (GHC.Classes.$fEq[]_$c==
+                     @ Data.ByteString.Internal.ByteString
+                     Data.ByteString.Internal.$fEqByteString)
+                  Request.Internal.Request.$fEqRequest_$s$fEq[]_$c/= -}
+55a17bdf8fe5146e20823e6bda59585b
+  $fEqRequest_$s$fEq[]_$c/= ::
+    [Data.ByteString.Internal.ByteString]
+    -> [Data.ByteString.Internal.ByteString] -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (x :: [Data.ByteString.Internal.ByteString])
+                   (y :: [Data.ByteString.Internal.ByteString]) ->
+                 GHC.Classes.not
+                   (GHC.Classes.$fEq[]_$c==
+                      @ Data.ByteString.Internal.ByteString
+                      Data.ByteString.Internal.$fEqByteString
+                      x
+                      y)) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fShowRequest :: GHC.Show.Show Request.Internal.Request.Request
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Internal.Request.Request
+                  Request.Internal.Request.$fShowRequest_$cshowsPrec
+                  Request.Internal.Request.$fShowRequest_$cshow
+                  Request.Internal.Request.$fShowRequest_$cshowList -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fShowRequest1 ::
+    Request.Internal.Request.Request -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ (w :: Request.Internal.Request.Request)
+                   (w1 :: GHC.Base.String) ->
+                 case w of ww { Request.Internal.Request.Request ww1 ww2 ->
+                 Request.Internal.Request.$w$cshowsPrec 0# ww1 ww2 w1 }) -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fShowRequestLine ::
+    GHC.Show.Show Request.Internal.Request.RequestLine
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Internal.Request.RequestLine
+                  Request.Internal.Request.$fShowRequestLine_$cshowsPrec
+                  Request.Internal.Request.$fShowRequestLine_$cshow
+                  Request.Internal.Request.$fShowRequestLine_$cshowList -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fShowRequestLine1 ::
+    Request.Internal.Request.RequestLine -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (\ (w :: Request.Internal.Request.RequestLine)
+                   (w1 :: GHC.Base.String) ->
+                 case w of ww { Request.Internal.Request.RequestLine ww1 ww2 ww3 ->
+                 Request.Internal.Request.$w$cshowsPrec1 0# ww1 ww2 ww3 w1 }) -}
+a65aa9f444776f04beb9e70cda23efed
+  $fShowRequestLine2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
+dcbc5e5e5539ef17372489f33342d8f9
+  $fShowRequestLine3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "version = "#) -}
+d8e6ab89d576bc3d1f2aa5731169711c
+  $fShowRequestLine4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "path = "#) -}
+a06c5df10a3894e4104a285b7cfd8bac
+  $fShowRequestLine5 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
+7290298d906725db424aeee26658c151
+  $fShowRequestLine6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "method = "#) -}
+2f9784b2fc8800e015508c3002903bb4
+  $fShowRequestLine7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "RequestLine {"#) -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fShowRequestLine_$cshow ::
+    Request.Internal.Request.RequestLine -> GHC.Base.String
+  {- Arity: 1,
+     Strictness: <S,1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Request.Internal.Request.RequestLine) ->
+                 Request.Internal.Request.$fShowRequestLine_$cshowsPrec
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fShowRequestLine_$cshowList ::
+    [Request.Internal.Request.RequestLine] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Request.Internal.Request.RequestLine
+                   Request.Internal.Request.$fShowRequestLine1) -}
+2bbc8c3f3df9502ab7368530e0a9735f
+  $fShowRequestLine_$cshowsPrec ::
+    GHC.Types.Int
+    -> Request.Internal.Request.RequestLine -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <S(S),1*U(U)><S,1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Request.Internal.Request.RequestLine)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Request.Internal.Request.RequestLine ww3 ww4 ww5 ->
+                 Request.Internal.Request.$w$cshowsPrec1 ww1 ww3 ww4 ww5 w2 } }) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fShowRequest_$cshow ::
+    Request.Internal.Request.Request -> GHC.Base.String
+  {- Arity: 1,
+     Strictness: <S,1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Request.Internal.Request.Request) ->
+                 Request.Internal.Request.$fShowRequest_$cshowsPrec
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fShowRequest_$cshowList ::
+    [Request.Internal.Request.Request] -> GHC.Show.ShowS
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__
+                   @ Request.Internal.Request.Request
+                   Request.Internal.Request.$fShowRequest1) -}
+ec1962fda2a0e6558cff6d36adc6ff0c
+  $fShowRequest_$cshowsPrec ::
+    GHC.Types.Int -> Request.Internal.Request.Request -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <S(S),1*U(U)><S,1*U(1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U)),1*U)><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, False)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Request.Internal.Request.Request)
+                   (w2 :: GHC.Base.String) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Request.Internal.Request.Request ww3 ww4 ->
+                 Request.Internal.Request.$w$cshowsPrec ww1 ww3 ww4 w2 } }) -}
+3d17f22cdbd23e91b8ce7aefcfe0b2ea
+  $tc'Request :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16704893194117171128##
+                   8758554845029640391##
+                   Request.Internal.Request.$trModule
+                   Request.Internal.Request.$tc'Request1) -}
+30c60c27255a2e26b9b4c557228e2656
+  $tc'Request1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Request"#) -}
+ba14023db94c87ebdc4c3aa1f2322324
+  $tc'RequestLine :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   12141726842480677437##
+                   12209514423824161769##
+                   Request.Internal.Request.$trModule
+                   Request.Internal.Request.$tc'RequestLine1) -}
+0b3bf2f32b99abff9f899ef7d9421f61
+  $tc'RequestLine1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'RequestLine"#) -}
+ad986e7b12dced0143eafad4d9f8fe7b
+  $tcRequest :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   4270630438776730180##
+                   8895780473944992071##
+                   Request.Internal.Request.$trModule
+                   Request.Internal.Request.$tcRequest1) -}
+de603e8d74ed5fd07fe294621b599ac9
+  $tcRequest1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Request"#) -}
+85ac3fce26d6821c66ce0bb8e3926297
+  $tcRequestLine :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2193715109940932005##
+                   12499306665050474449##
+                   Request.Internal.Request.$trModule
+                   Request.Internal.Request.$tcRequestLine1) -}
+73f6cd9b4188af82a05bf6fb6a6cf2bb
+  $tcRequestLine1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "RequestLine"#) -}
+fa0213bac27f16d72fec6e02203faaf5
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Request.Internal.Request.$trModule2
+                   Request.Internal.Request.$trModule1) -}
+f06b6a0f8b8157a6c07c4f13034783aa
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Request.Internal.Request"#) -}
+8392f5aa83af782f63e8287df6822fae
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+98de6b2833d2cb0e964ac663e3d3c1b1
+  $w$c== ::
+    GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+    -> GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+    -> GHC.Types.Bool
+  {- Arity: 14, HasNoCafRefs,
+     Strictness: <L,U><L,U><L,U><S,U><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)><L,1*U><L,U><L,U><L,U><S,U><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)><L,1*U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Addr#)
+                   (ww1 :: GHC.ForeignPtr.ForeignPtrContents)
+                   (ww2 :: GHC.Prim.Int#)
+                   (ww3 :: GHC.Prim.Int#)
+                   (ww4 :: Data.ByteString.Internal.ByteString)
+                   (ww5 :: Data.ByteString.Internal.ByteString)
+                   (ww6 :: [(Data.ByteString.Internal.ByteString,
+                             [Data.ByteString.Internal.ByteString])])
+                   (ww7 :: GHC.Prim.Addr#)
+                   (ww8 :: GHC.ForeignPtr.ForeignPtrContents)
+                   (ww9 :: GHC.Prim.Int#)
+                   (ww10 :: GHC.Prim.Int#)
+                   (ww11 :: Data.ByteString.Internal.ByteString)
+                   (ww12 :: Data.ByteString.Internal.ByteString)
+                   (ww13 :: [(Data.ByteString.Internal.ByteString,
+                              [Data.ByteString.Internal.ByteString])]) ->
+                 case Request.Internal.Request.$w$c==1
+                        ww
+                        ww1
+                        ww2
+                        ww3
+                        ww4
+                        ww5
+                        ww7
+                        ww8
+                        ww9
+                        ww10
+                        ww11
+                        ww12 of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> GHC.Classes.$fEq[]_$c==
+                        @ (Data.ByteString.Internal.ByteString,
+                           [Data.ByteString.Internal.ByteString])
+                        Request.Internal.Request.$fEqRequest_$s$fEq(,)
+                        ww6
+                        ww13 }) -}
+01796f50a160812b5ca0eae388ed495a
+  $w$c==1 ::
+    GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> GHC.Types.Bool
+  {- Arity: 12, HasNoCafRefs,
+     Strictness: <L,U><L,U><L,U><S,U><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)><L,U><L,U><L,U><S,U><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Addr#)
+                   (ww1 :: GHC.ForeignPtr.ForeignPtrContents)
+                   (ww2 :: GHC.Prim.Int#)
+                   (ww3 :: GHC.Prim.Int#)
+                   (ww4 :: Data.ByteString.Internal.ByteString)
+                   (ww5 :: Data.ByteString.Internal.ByteString)
+                   (ww6 :: GHC.Prim.Addr#)
+                   (ww7 :: GHC.ForeignPtr.ForeignPtrContents)
+                   (ww8 :: GHC.Prim.Int#)
+                   (ww9 :: GHC.Prim.Int#)
+                   (ww10 :: Data.ByteString.Internal.ByteString)
+                   (ww11 :: Data.ByteString.Internal.ByteString) ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim./=# ww3 ww9) of wild2 {
+                   GHC.Types.False
+                   -> let {
+                        $j :: GHC.Prim.Void# -> GHC.Types.Bool
+                          {- Arity: 1, Strictness: <L,A> -}
+                        = \ (w :: GHC.Prim.Void#)[OneShot] ->
+                          case ww4 of wild { Data.ByteString.Internal.PS dt dt1 dt2 dt3 ->
+                          case ww10 of wild1 { Data.ByteString.Internal.PS dt4 dt5 dt6 dt7 ->
+                          case GHC.Prim.tagToEnum#
+                                 @ GHC.Types.Bool
+                                 (GHC.Prim./=# dt3 dt7) of wild4 {
+                            GHC.Types.False
+                            -> case GHC.Prim.tagToEnum#
+                                      @ GHC.Types.Bool
+                                      (GHC.Prim.eqAddr# dt dt4) of wild5 {
+                                 GHC.Types.False
+                                 -> case Data.ByteString.Internal.$wcompareBytes
+                                           dt
+                                           dt1
+                                           dt2
+                                           dt3
+                                           dt4
+                                           dt5
+                                           dt6
+                                           dt7 of wild6 {
+                                      DEFAULT -> GHC.Types.False
+                                      GHC.Types.EQ -> Data.ByteString.Internal.eq ww5 ww11 }
+                                 GHC.Types.True
+                                 -> case GHC.Prim.tagToEnum#
+                                           @ GHC.Types.Bool
+                                           (GHC.Prim.==# dt2 dt6) of wild3 {
+                                      GHC.Types.False
+                                      -> case Data.ByteString.Internal.$wcompareBytes
+                                                dt
+                                                dt1
+                                                dt2
+                                                dt3
+                                                dt4
+                                                dt5
+                                                dt6
+                                                dt7 of wild6 {
+                                           DEFAULT -> GHC.Types.False
+                                           GHC.Types.EQ -> Data.ByteString.Internal.eq ww5 ww11 }
+                                      GHC.Types.True -> Data.ByteString.Internal.eq ww5 ww11 } }
+                            GHC.Types.True -> GHC.Types.False } } }
+                      } in
+                      case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.eqAddr# ww ww6) of wild {
+                        GHC.Types.False
+                        -> case Data.ByteString.Internal.$wcompareBytes
+                                  ww
+                                  ww1
+                                  ww2
+                                  ww3
+                                  ww6
+                                  ww7
+                                  ww8
+                                  ww9 of wild1 {
+                             DEFAULT -> GHC.Types.False GHC.Types.EQ -> $j GHC.Prim.void# }
+                        GHC.Types.True
+                        -> case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.==# ww2 ww8) of wild3 {
+                             GHC.Types.False
+                             -> case Data.ByteString.Internal.$wcompareBytes
+                                       ww
+                                       ww1
+                                       ww2
+                                       ww3
+                                       ww6
+                                       ww7
+                                       ww8
+                                       ww9 of wild1 {
+                                  DEFAULT -> GHC.Types.False GHC.Types.EQ -> $j GHC.Prim.void# }
+                             GHC.Types.True -> $j GHC.Prim.void# } }
+                   GHC.Types.True -> GHC.Types.False }) -}
+1ad419426c785c9041db36b6a428ef73
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> Request.Internal.Request.RequestLine
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 4,
+     Strictness: <S,U><L,1*U(1*U(U,U,U,U),1*U(U,U,U,U),1*U(U,U,U,U))><L,1*U><L,U>,
+     Inline: [0] -}
+0575f133f6eb9c8960fc6e57c24fed42
+  $w$cshowsPrec1 ::
+    GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> Data.ByteString.Internal.ByteString
+    -> GHC.Base.String
+    -> GHC.Base.String
+  {- Arity: 5,
+     Strictness: <S,U><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)><L,1*U(U,U,U,U)><L,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: Data.ByteString.Internal.ByteString)
+                   (ww2 :: Data.ByteString.Internal.ByteString)
+                   (ww3 :: Data.ByteString.Internal.ByteString)
+                   (w :: GHC.Base.String) ->
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x :: GHC.Base.String)[OneShot] ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       Request.Internal.Request.$fShowRequestLine7
+                       (GHC.Base.++
+                          @ GHC.Types.Char
+                          Request.Internal.Request.$fShowRequestLine6
+                          (GHC.Types.:
+                             @ GHC.Types.Char
+                             GHC.Show.shows6
+                             (case ww1 of ww4 { Data.ByteString.Internal.PS ww5 ww6 ww7 ww8 ->
+                              GHC.Show.showLitString
+                                (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                                   ww5
+                                   ww6
+                                   ww7
+                                   ww8
+                                   (GHC.Types.[] @ GHC.Types.Char))
+                                (GHC.Types.:
+                                   @ GHC.Types.Char
+                                   GHC.Show.shows6
+                                   (GHC.Base.++
+                                      @ GHC.Types.Char
+                                      Request.Internal.Request.$fShowRequestLine5
+                                      (GHC.Base.++
+                                         @ GHC.Types.Char
+                                         Request.Internal.Request.$fShowRequestLine4
+                                         (GHC.Types.:
+                                            @ GHC.Types.Char
+                                            GHC.Show.shows6
+                                            (case ww2 of ww9 { Data.ByteString.Internal.PS ww10 ww11 ww12 ww13 ->
+                                             GHC.Show.showLitString
+                                               (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                                                  ww10
+                                                  ww11
+                                                  ww12
+                                                  ww13
+                                                  (GHC.Types.[] @ GHC.Types.Char))
+                                               (GHC.Types.:
+                                                  @ GHC.Types.Char
+                                                  GHC.Show.shows6
+                                                  (GHC.Base.++
+                                                     @ GHC.Types.Char
+                                                     Request.Internal.Request.$fShowRequestLine5
+                                                     (GHC.Base.++
+                                                        @ GHC.Types.Char
+                                                        Request.Internal.Request.$fShowRequestLine3
+                                                        (GHC.Types.:
+                                                           @ GHC.Types.Char
+                                                           GHC.Show.shows6
+                                                           (case ww3 of ww14 { Data.ByteString.Internal.PS ww15 ww16 ww17 ww18 ->
+                                                            GHC.Show.showLitString
+                                                              (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                                                                 ww15
+                                                                 ww16
+                                                                 ww17
+                                                                 ww18
+                                                                 (GHC.Types.[] @ GHC.Types.Char))
+                                                              (GHC.Types.:
+                                                                 @ GHC.Types.Char
+                                                                 GHC.Show.shows6
+                                                                 (GHC.Base.++
+                                                                    @ GHC.Types.Char
+                                                                    Request.Internal.Request.$fShowRequestLine2
+                                                                    x)) }))))) }))))) })))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False -> p w
+                   GHC.Types.True
+                   -> GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows7
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows4 w)) }) -}
+02a24d6c4648a8272d2027b26ef77166
+  $wfromString ::
+    GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Request.Internal.Request.ParseMonad
+         Request.Internal.Request.RequestLine
+  {- Arity: 4, Strictness: <L,U><L,U><L,U><S,1*U>, Inline: [0] -}
+ddbd36d563c53965e468ae035ee71b7d
+  $wparseHeader ::
+    Data.ByteString.Internal.ByteString
+    -> (# Data.ByteString.Internal.ByteString,
+          [Data.ByteString.Internal.ByteString] #)
+  {- Arity: 1, Strictness: <L,1*U(U,U,U,1*U)>, Inline: [0],
+     Unfolding: (\ (w :: Data.ByteString.Internal.ByteString) ->
+                 let {
+                   values :: [Data.ByteString.Internal.ByteString]
+                   = case w of wild { Data.ByteString.Internal.PS dt dt1 dt2 dt3 ->
+                     case dt3 of ds2 {
+                       DEFAULT
+                       -> letrec {
+                            $wloop :: GHC.Prim.Int# -> [Data.ByteString.Internal.ByteString]
+                              {- Arity: 1, Strictness: <S,U>, Inline: [0] -}
+                            = \ (ww :: GHC.Prim.Int#) ->
+                              case {__pkg_ccall bytestring-0.10.8.1@bytestring-0.10.8.1 memchr GHC.Prim.Addr#
+                                                                                               -> GHC.Prim.Int#
+                                                                                               -> GHC.Prim.Word#
+                                                                                               -> GHC.Prim.State#
+                                                                                                    GHC.Prim.RealWorld
+                                                                                               -> (# GHC.Prim.State#
+                                                                                                       GHC.Prim.RealWorld,
+                                                                                                     GHC.Prim.Addr# #)}
+                                     (GHC.Prim.plusAddr# dt (GHC.Prim.+# dt2 ww))
+                                     58#
+                                     (GHC.Prim.int2Word# (GHC.Prim.-# ds2 ww))
+                                     GHC.Prim.realWorld# of wild1 { (#,#) ds4 ds5 ->
+                              case GHC.Prim.touch#
+                                     @ 'GHC.Types.PtrRepLifted
+                                     @ GHC.ForeignPtr.ForeignPtrContents
+                                     dt1
+                                     ds4 of s' { DEFAULT ->
+                              case GHC.Prim.tagToEnum#
+                                     @ GHC.Types.Bool
+                                     (GHC.Prim.eqAddr# ds5 __NULL) of wild2 {
+                                GHC.Types.False
+                                -> let {
+                                     i :: GHC.Types.Int
+                                     = case GHC.Prim.touch#
+                                              @ 'GHC.Types.PtrRepLifted
+                                              @ GHC.ForeignPtr.ForeignPtrContents
+                                              dt1
+                                              GHC.Prim.realWorld# of s'1 { DEFAULT ->
+                                       GHC.Types.I#
+                                         (GHC.Prim.minusAddr# ds5 (GHC.Prim.plusAddr# dt dt2)) }
+                                   } in
+                                   GHC.Types.:
+                                     @ Data.ByteString.Internal.ByteString
+                                     (case i of wild4 { GHC.Types.I# x ->
+                                      Data.ByteString.Internal.PS
+                                        dt
+                                        dt1
+                                        (GHC.Prim.+# dt2 ww)
+                                        (GHC.Prim.-# x ww) })
+                                     (case i of wild4 { GHC.Types.I# x ->
+                                      $wloop (GHC.Prim.+# x 1#) })
+                                GHC.Types.True
+                                -> GHC.Types.:
+                                     @ Data.ByteString.Internal.ByteString
+                                     (Data.ByteString.Internal.PS
+                                        dt
+                                        dt1
+                                        (GHC.Prim.+# dt2 ww)
+                                        (GHC.Prim.-# ds2 ww))
+                                     (GHC.Types.[] @ Data.ByteString.Internal.ByteString) } } }
+                          } in
+                          $wloop 0#
+                       0# -> GHC.Types.[] @ Data.ByteString.Internal.ByteString } }
+                 } in
+                 (# GHC.List.head @ Data.ByteString.Internal.ByteString values,
+                    GHC.List.tail @ Data.ByteString.Internal.ByteString values #)) -}
+5bbaf38462185efecc6bdf6bc7e0a10b
+  $wparseRequestFromString ::
+    [Data.ByteString.Internal.ByteString]
+    -> (# Request.Internal.Request.RequestLine,
+          [(Data.ByteString.Internal.ByteString,
+            [Data.ByteString.Internal.ByteString])] #)
+  {- Arity: 1, Strictness: <L,U>, Inline: [0],
+     Unfolding: (\ (w :: [Data.ByteString.Internal.ByteString]) ->
+                 (# case w of wild {
+                      []
+                      -> case GHC.List.badHead
+                         ret_ty Request.Internal.Request.RequestLine
+                         of {}
+                      : x ds1
+                      -> case x of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         case Request.Internal.Request.$wfromString
+                                ww1
+                                ww2
+                                ww3
+                                ww4 of wild1 {
+                           Data.Either.Left err -> Request.Internal.Request.parseRequest4 err
+                           Data.Either.Right x1 -> x1 } } },
+                    case w of wild {
+                      []
+                      -> case GHC.List.scanl2
+                         ret_ty [(Data.ByteString.Internal.ByteString,
+                                  [Data.ByteString.Internal.ByteString])]
+                         of {}
+                      : ds1 xs -> Request.Internal.Request.parseRequest_go xs } #)) -}
+2e442de513e3ebafb470a1ba0fa85ec6
+  type ParseMonad =
+    Data.Either.Either Request.Error.ParseError :: * -> *
+ec1962fda2a0e6558cff6d36adc6ff0c
+  data Request
+    = Request {requestLine :: Request.Internal.Request.RequestLine,
+               headers :: [(Data.ByteString.Internal.ByteString,
+                            [Data.ByteString.Internal.ByteString])]}
+2bbc8c3f3df9502ab7368530e0a9735f
+  data RequestLine
+    = RequestLine {method :: Data.ByteString.Internal.ByteString,
+                   path :: Data.ByteString.Internal.ByteString,
+                   version :: Data.ByteString.Internal.ByteString}
+123c4de6a01c6e08727f9c0ac63edb53
+  fromString ::
+    Data.ByteString.Internal.ByteString
+    -> Request.Internal.Request.ParseMonad
+         Request.Internal.Request.RequestLine
+  {- Arity: 1, Strictness: <S(LLLS),1*U(U,U,U,1*U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Data.ByteString.Internal.ByteString) ->
+                 case w of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                 Request.Internal.Request.$wfromString ww1 ww2 ww3 ww4 }) -}
+d871f59c3dc6a4cac25bcc9ea5932fdb
+  headers ::
+    Request.Internal.Request.Request
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+  RecSel Left Request.Internal.Request.Request
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Request.Internal.Request.Request) ->
+                 case ds of wild { Request.Internal.Request.Request ds1 ds2 ->
+                 ds2 }) -}
+4ce79145e9a885c03f3c7c357ad60dba
+  method ::
+    Request.Internal.Request.RequestLine
+    -> Data.ByteString.Internal.ByteString
+  RecSel Left Request.Internal.Request.RequestLine
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(SLL),1*U(1*U(U,U,U,U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Request.Internal.Request.RequestLine) ->
+                 case ds of wild { Request.Internal.Request.RequestLine ds1 ds2 ds3 ->
+                 ds1 }) -}
+306924bc9ea3e2afcd225f2591572b8d
+  parseHeader ::
+    Data.ByteString.Internal.ByteString
+    -> (Data.ByteString.Internal.ByteString,
+        [Data.ByteString.Internal.ByteString])
+  {- Arity: 1, Strictness: <L,1*U(U,U,U,1*U)>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Data.ByteString.Internal.ByteString) ->
+                 case Request.Internal.Request.$wparseHeader
+                        w of ww { (#,#) ww1 ww2 ->
+                 (ww1, ww2) }) -}
+d28e23a87db8f25dfd66275233c04a0a
+  parseHeaders ::
+    [Data.ByteString.Internal.ByteString]
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (headers1 :: [Data.ByteString.Internal.ByteString]) ->
+                 Request.Internal.Request.parseHeaders_go headers1) -}
+b7b4db895ef6599d20c050a799136648
+  parseHeaders_go ::
+    [Data.ByteString.Internal.ByteString]
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+  {- Arity: 1, Strictness: <S,1*U> -}
+58ecb674b4f34c322c60c4d892e9e67f
+  parseRequest ::
+    GHC.IO.Handle.Types.Handle
+    -> GHC.Types.IO Request.Internal.Request.Request
+  {- Arity: 2, Strictness: <S,U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Request.Internal.Request.parseRequest1
+                  `cast`
+                (<GHC.IO.Handle.Types.Handle>_R
+                 ->_R Sym (GHC.Types.N:IO[0]
+                               <Request.Internal.Request.Request>_R)) -}
+1391a01763bc22f7d337665786ad2937
+  parseRequest1 ::
+    GHC.IO.Handle.Types.Handle
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Request.Internal.Request.Request #)
+  {- Arity: 2, Strictness: <S,U><S,U>,
+     Unfolding: (\ (handle :: GHC.IO.Handle.Types.Handle)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Handle.Text.hGetContents1
+                        handle
+                        eta of ds1 { (#,#) ipv ipv1 ->
+                 (# ipv,
+                    case Request.Internal.Request.$wparseRequestFromString
+                           (GHC.Base.map
+                              @ [GHC.Types.Char]
+                              @ Data.ByteString.Internal.ByteString
+                              Data.ByteString.Internal.packChars
+                              (Request.Internal.Request.parseRequest2
+                                 ipv1)) of ww { (#,#) ww1 ww2 ->
+                    Request.Internal.Request.Request ww1 ww2 } #) }) -}
+3bc143ce2bbd0adc4a88edd51468958b
+  parseRequest2 :: [GHC.Types.Char] -> [[GHC.Types.Char]]
+  {- Unfolding: (Data.List.Split.Internals.splitOn
+                   @ GHC.Types.Char
+                   GHC.Classes.$fEqChar
+                   Request.Internal.Request.parseRequest3) -}
+d2a50cacf0139f376abab10092dd173e
+  parseRequest3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "\r\n"#) -}
+10b0c8ad1cee6018a0b228f2f2a0eb76
+  parseRequest4 ::
+    Request.Error.ParseError -> Request.Internal.Request.RequestLine
+  {- Arity: 1, Strictness: <L,U>x -}
+16c899abf8ec215ae2d554f04f6a99af
+  parseRequestFromString ::
+    [Data.ByteString.Internal.ByteString]
+    -> Request.Internal.Request.Request
+  {- Arity: 1, Strictness: <L,U>m, Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: [Data.ByteString.Internal.ByteString]) ->
+                 case Request.Internal.Request.$wparseRequestFromString
+                        w of ww { (#,#) ww1 ww2 ->
+                 Request.Internal.Request.Request ww1 ww2 }) -}
+00ef090346b47a4cd853498e3ae354df
+  parseRequest_go ::
+    [Data.ByteString.Internal.ByteString]
+    -> [(Data.ByteString.Internal.ByteString,
+         [Data.ByteString.Internal.ByteString])]
+  {- Arity: 1, Strictness: <S,1*U> -}
+267ca54bc95114d552f4b29db33c5a95
+  parseToString ::
+    GHC.IO.Handle.Types.Handle
+    -> [Data.ByteString.Internal.ByteString]
+    -> GHC.Types.IO [Data.ByteString.Internal.ByteString]
+  {- Arity: 3, Strictness: <S,U><L,A><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Request.Internal.Request.parseToString1
+                  `cast`
+                (<GHC.IO.Handle.Types.Handle>_R
+                 ->_R <[Data.ByteString.Internal.ByteString]>_R
+                 ->_R Sym (GHC.Types.N:IO[0]
+                               <[Data.ByteString.Internal.ByteString]>_R)) -}
+c6f04af7f1ec0ddbbd3bb698ec742e9f
+  parseToString1 ::
+    GHC.IO.Handle.Types.Handle
+    -> [Data.ByteString.Internal.ByteString]
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          [Data.ByteString.Internal.ByteString] #)
+  {- Arity: 3, Strictness: <S,U><L,A><S,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (handle :: GHC.IO.Handle.Types.Handle)
+                   (allLines :: [Data.ByteString.Internal.ByteString])
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Handle.Text.hGetContents1
+                        handle
+                        eta of ds1 { (#,#) ipv ipv1 ->
+                 (# ipv,
+                    GHC.Base.build
+                      @ Data.ByteString.Internal.ByteString
+                      (\ @ b1
+                         (c :: Data.ByteString.Internal.ByteString -> b1 -> b1)[OneShot]
+                         (n :: b1)[OneShot] ->
+                       GHC.Base.foldr
+                         @ [GHC.Types.Char]
+                         @ b1
+                         (GHC.Base.mapFB
+                            @ Data.ByteString.Internal.ByteString
+                            @ b1
+                            @ [GHC.Types.Char]
+                            c
+                            Data.ByteString.Internal.packChars)
+                         n
+                         (Data.List.Split.Internals.splitOn
+                            @ GHC.Types.Char
+                            GHC.Classes.$fEqChar
+                            Request.Internal.Request.parseRequest3
+                            ipv1)) #) }) -}
+5b8cf70199c635eea65e29131bc3f7e2
+  path ::
+    Request.Internal.Request.RequestLine
+    -> Data.ByteString.Internal.ByteString
+  RecSel Left Request.Internal.Request.RequestLine
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LSL),1*U(A,1*U(U,U,U,U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Request.Internal.Request.RequestLine) ->
+                 case ds of wild { Request.Internal.Request.RequestLine ds1 ds2 ds3 ->
+                 ds2 }) -}
+296baa70e19f2d415e38f6def555d0ec
+  requestLine ::
+    Request.Internal.Request.Request
+    -> Request.Internal.Request.RequestLine
+  RecSel Left Request.Internal.Request.Request
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U(U,U,U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Request.Internal.Request.Request) ->
+                 case ds of wild { Request.Internal.Request.Request ds1 ds2 ->
+                 ds1 }) -}
+60c8558cb191f47b3a82ea924c8b5279
+  version ::
+    Request.Internal.Request.RequestLine
+    -> Data.ByteString.Internal.ByteString
+  RecSel Left Request.Internal.Request.RequestLine
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLS),1*U(A,A,1*U(U,U,U,U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Request.Internal.Request.RequestLine) ->
+                 case ds of wild { Request.Internal.Request.RequestLine ds1 ds2 ds3 ->
+                 ds3 }) -}
+instance [safe] GHC.Classes.Eq [Request.Internal.Request.Request]
+  = Request.Internal.Request.$fEqRequest
+instance [safe] GHC.Classes.Eq [Request.Internal.Request.RequestLine]
+  = Request.Internal.Request.$fEqRequestLine
+instance [safe] GHC.Show.Show [Request.Internal.Request.Request]
+  = Request.Internal.Request.$fShowRequest
+instance [safe] GHC.Show.Show [Request.Internal.Request.RequestLine]
+  = Request.Internal.Request.$fShowRequestLine
+"SPEC/Request.Internal.Request $fEq(,) @ ByteString @ [ByteString]" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
+                                                                                                [Data.ByteString.Internal.ByteString])
+                                                                                    ($dEq :: GHC.Classes.Eq
+                                                                                               Data.ByteString.Internal.ByteString)
+  GHC.Classes.$fEq(,) @ Data.ByteString.Internal.ByteString
+                      @ [Data.ByteString.Internal.ByteString]
+                      $dEq
+                      $dEq1
+  = Request.Internal.Request.$fEqRequest_$s$fEq(,)
+"SPEC/Request.Internal.Request $fEq[] @ ByteString" [ALWAYS] forall ($dEq :: GHC.Classes.Eq
+                                                                               Data.ByteString.Internal.ByteString)
+  GHC.Classes.$fEq[] @ Data.ByteString.Internal.ByteString $dEq
+  = Request.Internal.Request.$fEqRequest_$s$fEq[]
+"SPEC/Request.Internal.Request $fEq[]_$c/= @ ByteString" [ALWAYS] forall ($dEq :: GHC.Classes.Eq
+                                                                                    Data.ByteString.Internal.ByteString)
+  GHC.Classes.$fEq[]_$c/= @ Data.ByteString.Internal.ByteString $dEq
+  = Request.Internal.Request.$fEqRequest_$s$fEq[]_$c/=
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

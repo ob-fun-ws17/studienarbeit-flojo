@@ -1,0 +1,73 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-27 15:11:08.695164805 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Request.Request 8002
+  interface hash: 7c5b3f619805dbbf970b0c934ed4f572
+  ABI hash: e20d4554223ef5330293db24ab5f94a2
+  export-list hash: aea8d831aa2f25a8b439ce147b587938
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f6814f38f4c9427d072007935bd50854
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Request.Internal.Request.fromString
+  Request.Internal.Request.parseRequest
+  Request.Internal.Request.Request{Request.Internal.Request.Request headers requestLine}
+  Request.Internal.Request.RequestLine{Request.Internal.Request.RequestLine method path version}
+module dependencies: Request.Error Request.Internal.Request
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
+                      bytestring-0.10.8.1@bytestring-0.10.8.1
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+                      split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+import  -/  Request.Internal.Request 580015054337672e046a010af5d98082
+  exports: c9aa959cc77e45ac38ac07855cc66456
+  Request 22b5218af71b86ebbcc2d43af737a357
+  Request ec1962fda2a0e6558cff6d36adc6ff0c
+  RequestLine 3d83513d90825a7fab718a08640029c8
+  RequestLine 2bbc8c3f3df9502ab7368530e0a9735f
+  fromString 123c4de6a01c6e08727f9c0ac63edb53
+  headers d871f59c3dc6a4cac25bcc9ea5932fdb
+  method 4ce79145e9a885c03f3c7c357ad60dba
+  parseRequest 58ecb674b4f34c322c60c4d892e9e67f
+  path 5b8cf70199c635eea65e29131bc3f7e2
+  requestLine 296baa70e19f2d415e38f6def555d0ec
+  version 60c8558cb191f47b3a82ea924c8b5279
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+c701590f34537198e1e62b9967b630bb
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Request.Request.$trModule2
+                   Request.Request.$trModule1) -}
+a750946cdc82ab347ad6efa1073c19ad
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Request.Request"#) -}
+5421ce0d9e37791be971039e3e4dd254
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

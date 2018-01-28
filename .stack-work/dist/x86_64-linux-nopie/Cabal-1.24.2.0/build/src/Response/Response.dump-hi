@@ -1,0 +1,295 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-26 13:17:41.050212513 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Response.Response 8002
+  interface hash: 24edc1d7356aa1d5000eed4376418757
+  ABI hash: f6932e343a6d4ee484e582a8ddf25ed4
+  export-list hash: f48e53b203014d9ee71ba2e97a6065a2
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 0198f0a82ea128c5a2c7dfe5f3c82942
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Response.Response.buildInternalServerErrorResponse
+  Response.Response.buildNotFoundResponse
+  Response.Response.buildOkResponse
+  Response.Response.getContent
+  Response.Response.getHeaders
+  Response.Response.getReasonPhrase
+  Response.Response.getStatusCode
+  Response.Response.getVersion
+  Response.Response.toByteString
+  Response.Response.Response{Response.Response.Response content headers statusCode version}
+module dependencies: Response.StatusCode
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
+                      bytestring-0.10.8.1@bytestring-0.10.8.1*
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+import  -/  Response.StatusCode af4d693caf0d8ac773d394f9d11ba4ab
+  exports: ac1deabca3f27546ebfae33dd7df11dd
+  StatusCode 708f2f27e0d6637779ea09dfb7e30353
+  getReasonPhrase e1f5db6f1f07495b35e52ed4369087c8
+  getStatusCode 16abd91b331221f38d2244d1b695ea84
+  notFound be365f909f1b0b927ec78d166012546f
+  ok 2a28c6a8d3fb2d18762460bf56b6160f
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString 43e99fdac51908da414a28958688da64
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Char8 64661030f691dd1495e363eeda7a5344
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Internal 89cda42ec946d9d6577dd41ab95d523e
+import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2a
+02dd820f13aec1cfcc3c17d179627a31
+  $tc'Response :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   15707670966476337522##
+                   17192329483395110010##
+                   Response.Response.$trModule
+                   Response.Response.$tc'Response1) -}
+33f7b57182f21c15bbea38ca6002aa91
+  $tc'Response1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Response"#) -}
+e65be09ec16caac754160130ff42e653
+  $tcResponse :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   9136078891545455854##
+                   5243577907062509649##
+                   Response.Response.$trModule
+                   Response.Response.$tcResponse1) -}
+818707aa72adcf8b9b7a2597d0681723
+  $tcResponse1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Response"#) -}
+fbe1bd5f4ac7d26ecc661ce9283afe7e
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Response.Response.$trModule2
+                   Response.Response.$trModule1) -}
+3a20d735cd3fee021beee17870301554
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Response.Response"#) -}
+c9cdae6f5c9b5d3ac8c3079271820c80
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+bd4c628089472fbb6bd393a139494848
+  $wtoByteString ::
+    GHC.Integer.Type.Integer
+    -> [GHC.Types.Char]
+    -> GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Addr#
+    -> GHC.ForeignPtr.ForeignPtrContents
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Data.ByteString.Internal.ByteString
+  {- Arity: 10,
+     Strictness: <S,U><L,1*U><L,U><L,U><L,U><L,1*U><L,U><L,U><L,U><L,U>,
+     Inline: [0] -}
+622a255329a6088c693783c72ee2bf93
+  type Header = (GHC.Base.String, [GHC.Base.String])
+561bb5e22684ffb6990d057eebab133a
+  type Headers = [Response.Response.Header]
+2f389c21a7314cf34bf249200f4ca3f2
+  data Response
+    = Response {statusCode :: Response.StatusCode.StatusCode,
+                version :: Data.ByteString.Internal.ByteString,
+                headers :: Response.Response.Headers,
+                content :: Data.ByteString.Internal.ByteString}
+72c1deef1db6ca0517a010b6509e3ee9
+  buildInternalServerErrorResponse ::
+    Response.Response.Headers
+    -> Data.ByteString.Internal.ByteString
+    -> Response.Response.Response
+  {- Arity: 2, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (headers1 :: Response.Response.Headers)
+                   (eta :: Data.ByteString.Internal.ByteString) ->
+                 Response.Response.Response
+                   Response.StatusCode.notFound
+                   Response.Response.http11
+                   headers1
+                   eta) -}
+df0cc128cb000a6ecc6f6608bd9bdc2d
+  buildNotFoundResponse ::
+    Response.Response.Headers
+    -> Data.ByteString.Internal.ByteString
+    -> Response.Response.Response
+  {- Arity: 2, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (headers1 :: Response.Response.Headers)
+                   (eta :: Data.ByteString.Internal.ByteString) ->
+                 Response.Response.Response
+                   Response.StatusCode.notFound
+                   Response.Response.http11
+                   headers1
+                   eta) -}
+4b8ae0d2f0264015bcd617fa115ad5c2
+  buildOkResponse ::
+    Response.Response.Headers
+    -> Data.ByteString.Internal.ByteString
+    -> Response.Response.Response
+  {- Arity: 2, Strictness: <L,U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (headers1 :: Response.Response.Headers)
+                   (eta :: Data.ByteString.Internal.ByteString) ->
+                 Response.Response.Response
+                   Response.StatusCode.ok
+                   Response.Response.http11
+                   headers1
+                   eta) -}
+9007539943f211d07c138d0ccedf7aa0
+  content ::
+    Response.Response.Response -> Data.ByteString.Internal.ByteString
+  RecSel Left Response.Response.Response
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLS),1*U(A,A,A,1*U(U,U,U,U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 ds3 ds4 ->
+                 ds4 }) -}
+0808c5c83f0929a4af68b589eb71e719
+  getContent ::
+    Response.Response.Response -> Data.ByteString.Internal.ByteString
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLS),1*U(A,A,A,1*U(U,U,U,U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 ds3 content1 ->
+                 content1 }) -}
+4462f3da671a8edc6d5bd93a37387ae0
+  getHeaders ::
+    Response.Response.Response -> Response.Response.Headers
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLSL),1*U(A,A,1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 headers1 ds3 ->
+                 headers1 }) -}
+3b5404bdd1d44f075c1d9dc643eb42cd
+  getReasonPhrase :: Response.Response.Response -> GHC.Base.String
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(S(LLS)LLL),1*U(1*U(A,A,1*U),A,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response status ds1 ds2 ds3 ->
+                 Response.StatusCode.getReasonPhrase status }) -}
+46502a8abd04edda0057e26b1eb36e3c
+  getStatusCode ::
+    Response.Response.Response -> GHC.Integer.Type.Integer
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(S(LSL)LLL),1*U(1*U(A,1*U,A),A,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response status ds1 ds2 ds3 ->
+                 Response.StatusCode.getStatusCode status }) -}
+5e8276ba78de9237effd10813f73b500
+  getVersion ::
+    Response.Response.Response -> Data.ByteString.Internal.ByteString
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LSLL),1*U(A,1*U(U,U,U,U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 version1 ds2 ds3 ->
+                 version1 }) -}
+f74a38bf6402a367dd1790966b0e9e2f
+  headers :: Response.Response.Response -> Response.Response.Headers
+  RecSel Left Response.Response.Response
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLSL),1*U(A,A,1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 ds3 ds4 ->
+                 ds3 }) -}
+0d1f13bce063605bf0cd08fb31827959
+  http11 :: Data.ByteString.Internal.ByteString
+  {- Unfolding: (case GHC.Prim.newMutVar#
+                        @ GHC.ForeignPtr.Finalizers
+                        @ GHC.Prim.RealWorld
+                        GHC.ForeignPtr.NoFinalizers
+                        GHC.Prim.realWorld# of ds1 { (#,#) ipv ipv1 ->
+                 let {
+                   addr# :: GHC.Prim.Addr# = "HTTP/1.1"#
+                 } in
+                 case {__pkg_ccall bytestring-0.10.8.1@bytestring-0.10.8.1 strlen GHC.Prim.Addr#
+                                                                                  -> GHC.Prim.State#
+                                                                                       GHC.Prim.RealWorld
+                                                                                  -> (# GHC.Prim.State#
+                                                                                          GHC.Prim.RealWorld,
+                                                                                        GHC.Prim.Word# #)}
+                        addr#
+                        ipv of wild { (#,#) ds3 ds4 ->
+                 Data.ByteString.Internal.PS
+                   addr#
+                   (GHC.ForeignPtr.PlainForeignPtr ipv1)
+                   0#
+                   (GHC.Prim.word2Int# ds4) } }) -}
+c8a993e619de9be5e2c2138e82339079
+  statusCode ::
+    Response.Response.Response -> Response.StatusCode.StatusCode
+  RecSel Left Response.Response.Response
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(SLLL),1*U(1*U(U,U,U),A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 ds3 ds4 ->
+                 ds1 }) -}
+0fffecf453587c33e730abebd5d025e9
+  toByteString ::
+    Response.Response.Response -> Data.ByteString.Internal.ByteString
+  {- Arity: 1,
+     Strictness: <S(S(LSL)SLS),1*U(1*U(A,U,1*U),1*U(U,U,U,1*U),A,1*U(U,U,U,U))>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Response.Response.Response) ->
+                 case w of ww { Response.Response.Response ww1 ww2 ww3 ww4 ->
+                 case ww1 of ww5 { Response.StatusCode.StatusCode ww6 ww7 ww8 ->
+                 case ww2 of ww9 { Data.ByteString.Internal.PS ww10 ww11 ww12 ww13 ->
+                 case ww4 of ww14 { Data.ByteString.Internal.PS ww15 ww16 ww17 ww18 ->
+                 Response.Response.$wtoByteString
+                   ww7
+                   ww8
+                   ww10
+                   ww11
+                   ww12
+                   ww13
+                   ww15
+                   ww16
+                   ww17
+                   ww18 } } } }) -}
+5916bf68c298bb86d5b1548e1e35a373
+  version ::
+    Response.Response.Response -> Data.ByteString.Internal.ByteString
+  RecSel Left Response.Response.Response
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LSLL),1*U(A,1*U(U,U,U,U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.Response.Response) ->
+                 case ds of wild { Response.Response.Response ds1 ds2 ds3 ds4 ->
+                 ds2 }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

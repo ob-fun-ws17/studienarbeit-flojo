@@ -1,0 +1,196 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-28 12:25:39.373576448 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Server 8002
+  interface hash: 656cef639d026b58a40e038335f8238c
+  ABI hash: 188ef3306a2be773a635bf509a2b6c88
+  export-list hash: 8c45422f151a52dff1eaa372f019e8a3
+  orphan hash: 12a41cad43a3452ff14aea35bd401fd1
+  flag hash: ededd53b8c2278c6bbf6fc26ffae74e4
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Server.start
+module dependencies: Read Request.Error Request.Internal.Request
+                     Request.Request Response.Error Response.Response
+                     Response.StatusCode
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      bytestring-0.10.8.1@bytestring-0.10.8.1
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+                      network-2.6.3.2@network-2.6.3.2-IsLM4TXcLoRI0fmmBYVyQz
+                      split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         network-2.6.3.2@network-2.6.3.2-IsLM4TXcLoRI0fmmBYVyQz:Network.Socket
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+import  -/  Read 5d0e1415f79f1de5c2174962365f8c8d
+  exports: 393420b1bf0cc50050166d747c8e4891
+  read 2fe90d57fce86fd43fffdd941e68a1eb
+import  -/  Request.Internal.Request 580015054337672e046a010af5d98082
+  parseRequest 58ecb674b4f34c322c60c4d892e9e67f
+  path 5b8cf70199c635eea65e29131bc3f7e2
+  requestLine 296baa70e19f2d415e38f6def555d0ec
+import  -/  Request.Request e20d4554223ef5330293db24ab5f94a2
+  exports: aea8d831aa2f25a8b439ce147b587938
+import  -/  Response.Error b2c8266c520c04f6411f368c45b18c9d
+  exports: b758e62580fd0897c79f914642b73e71
+  Error 6fa3f0a3f33a5f07af56440a4f91a6e4
+  FileDoesNotExist 2f7aad4cdefba9dd003844e24cffd4c4
+  OtherError 37dcca184f461e60c83fa5d90857dc48
+import  -/  Response.Response f6932e343a6d4ee484e582a8ddf25ed4
+  exports: f48e53b203014d9ee71ba2e97a6065a2
+  Response 2f389c21a7314cf34bf249200f4ca3f2
+  buildNotFoundResponse df0cc128cb000a6ecc6f6608bd9bdc2d
+  buildOkResponse 4b8ae0d2f0264015bcd617fa115ad5c2
+  toByteString 0fffecf453587c33e730abebd5d025e9
+import  -/  Response.StatusCode af4d693caf0d8ac773d394f9d11ba4ab
+  exports: ac1deabca3f27546ebfae33dd7df11dd
+import  -/  base-4.9.1.0:Data.Either 20b09ef8d0a5b74fdec011c40c1587f5
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.IO.Handle ba98a5b34d78cbf48b41fe58a3735c69
+import  -/  base-4.9.1.0:GHC.IO.Handle.Types 17aa0e2ab137800e3a31992d780c071f
+import  -/  base-4.9.1.0:GHC.IO.IOMode 2f5782f93b12a0d860d6d661b9fb405c
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.IO e4a64a8e3dce8616da54f0ee7104f7db
+import  -/  base-4.9.1.0:Text.Read 75c59863e882ebaec4532e9465e2ee9b
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString 43e99fdac51908da414a28958688da64
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Char8 64661030f691dd1495e363eeda7a5344
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Internal 89cda42ec946d9d6577dd41ab95d523e
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 20d4ffbee41965d03d6a989425473dc4
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base d432f6875983131473086af8cb290590
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+import  -/  network-2.6.3.2@network-2.6.3.2-IsLM4TXcLoRI0fmmBYVyQz:Network.Socket 37a604a783239e2285bfc83007ba2716
+import  -/  network-2.6.3.2@network-2.6.3.2-IsLM4TXcLoRI0fmmBYVyQz:Network.Socket.ByteString fc4416b38de53ba22474fc34618ee482
+import  -/  network-2.6.3.2@network-2.6.3.2-IsLM4TXcLoRI0fmmBYVyQz:Network.Socket.Types e0e029ac5eaa30b6170e0170a0fb3341
+import  -/  split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT:Data.List.Split 272c5cfa667e04d85d90f02a3d135474
+import  -/  split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT:Data.List.Split.Internals be3228c161b442fb4a76d9ed8518c1ed
+ee4a35ee48885b7950fffa89299a8ac2
+  $s!1 :: GHC.Base.String -> Data.Map.Base.Map GHC.Base.String a -> a
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+da18cbd74077cb7c540a6fcaf2fc0d75
+  $sfromList ::
+    [([GHC.Types.Char], a)] -> Data.Map.Base.Map [GHC.Types.Char] a
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ @ a (ds :: [([GHC.Types.Char], a)]) ->
+                 case ds of wild {
+                   [] -> Data.Map.Base.Tip @ [GHC.Types.Char] @ a
+                   : ds1 ds2
+                   -> case ds1 of wild1 { (,) kx x ->
+                      case ds2 of wild2 {
+                        []
+                        -> case kx of dt { DEFAULT ->
+                           Data.Map.Base.Bin
+                             @ [GHC.Types.Char]
+                             @ a
+                             1#
+                             dt
+                             x
+                             (Data.Map.Base.Tip @ [GHC.Types.Char] @ a)
+                             (Data.Map.Base.Tip @ [GHC.Types.Char] @ a) }
+                        : ipv ipv1
+                        -> case ipv of wild3 { (,) ky ds3 ->
+                           case GHC.Classes.$fOrd[]_$s$ccompare1 kx ky of wild4 {
+                             DEFAULT
+                             -> case kx of dt { DEFAULT ->
+                                Server.$sfromList1
+                                  @ a
+                                  (Data.Map.Base.Bin
+                                     @ [GHC.Types.Char]
+                                     @ a
+                                     1#
+                                     dt
+                                     x
+                                     (Data.Map.Base.Tip @ [GHC.Types.Char] @ a)
+                                     (Data.Map.Base.Tip @ [GHC.Types.Char] @ a))
+                                  wild2 }
+                             GHC.Types.LT
+                             -> case kx of dt { DEFAULT ->
+                                Server.$wpoly_go10
+                                  @ a
+                                  1#
+                                  (Data.Map.Base.Bin
+                                     @ [GHC.Types.Char]
+                                     @ a
+                                     1#
+                                     dt
+                                     x
+                                     (Data.Map.Base.Tip @ [GHC.Types.Char] @ a)
+                                     (Data.Map.Base.Tip @ [GHC.Types.Char] @ a))
+                                  wild2 } } } } } }) -}
+54c687b3c540c7ffc02440571fcdc5f5
+  $sfromList1 ::
+    Data.Map.Base.Map [GHC.Types.Char] a1
+    -> [([GHC.Types.Char], a1)]
+    -> Data.Map.Base.Map [GHC.Types.Char] a1
+  {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
+f0eaa1e9828453258f2f2e47bc8a066e
+  $sinsert_$sgo10 ::
+    [GHC.Types.Char]
+    -> a1
+    -> Data.Map.Base.Map [GHC.Types.Char] a1
+    -> Data.Map.Base.Map [GHC.Types.Char] a1
+  {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
+6c83adf7f4cfbf77594056d470a58088
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Server.$trModule2
+                   Server.$trModule1) -}
+9fcdeb228c8cffb4e68bf95c95df6285
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Server"#) -}
+0dc8472d3a94078423b14265b68234de
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+501e63e7a8b0a85129a05d93bf86cc98
+  $wpoly_go10 ::
+    GHC.Prim.Int#
+    -> Data.Map.Base.Map [GHC.Types.Char] a
+    -> [([GHC.Types.Char], a)]
+    -> Data.Map.Base.Map [GHC.Types.Char] a
+  {- Arity: 3, Strictness: <L,U><S,1*U><S,1*U>, Inline: [0] -}
+b552289be1854103baf375a19b3c1070
+  type ReadResult =
+    Data.Either.Either
+      Response.Error.Error Data.ByteString.Internal.ByteString
+efd7adb4c4941f68504747c15f32dfab
+  start :: GHC.Base.String -> GHC.Types.IO ()
+  {- Arity: 2, Strictness: <L,U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Server.start1
+                  `cast`
+                (<GHC.Base.String>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+85e3936586a3fe1abf0d0f0f4f777f83
+  start1 ::
+    GHC.Base.String
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <L,U><S,U> -}
+"SPEC/Server fromList @ [Char] _" [ALWAYS] forall @ a
+                                                  ($dOrd :: GHC.Classes.Ord [GHC.Types.Char])
+  Data.Map.Base.fromList @ [GHC.Types.Char] @ a $dOrd
+  = Server.$sfromList @ a
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

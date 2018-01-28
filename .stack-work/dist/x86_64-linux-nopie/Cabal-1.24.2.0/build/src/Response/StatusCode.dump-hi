@@ -1,0 +1,200 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-26 13:17:40.574719561 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Response.StatusCode 8002
+  interface hash: 6b67ba1d110efcc0650eafd09236bcbb
+  ABI hash: af4d693caf0d8ac773d394f9d11ba4ab
+  export-list hash: ac1deabca3f27546ebfae33dd7df11dd
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: c4358ba65915fccc5daf4c0fcff8109e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Response.StatusCode.getReasonPhrase
+  Response.StatusCode.getStatusCode
+  Response.StatusCode.notFound
+  Response.StatusCode.ok
+  Response.StatusCode.Code
+  Response.StatusCode.StatusCode{Response.StatusCode.StatusCode code reasonPharse statusCode}
+module dependencies:
+package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
+                         base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2a
+1ef57e7060c2d6c293a48cfd2ddb1ff0
+  $tc'Continue :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1548492497048970192##
+                   10520417066151712003##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tc'Continue1) -}
+7094d8908a144d26725783dd8be8cc75
+  $tc'Continue1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Continue"#) -}
+a1375d3e40df3ef60da351f754c6784c
+  $tc'NotFound :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   8690736833994215948##
+                   5418091909571881686##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tc'NotFound1) -}
+ca461871f5b7da1285eec88492354401
+  $tc'NotFound1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'NotFound"#) -}
+fe40f76205a46a624c3f3124556e3a87
+  $tc'Ok :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2932919799961996302##
+                   7844611509614586985##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tc'Ok1) -}
+4619abab3bda354fe2bcbcd87cd02a15
+  $tc'Ok1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'Ok"#) -}
+b0b9359d4f093e310dfcc845239c03bd
+  $tc'StatusCode :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2747752718600737185##
+                   11127291673512086124##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tc'StatusCode1) -}
+6f3d8563df728638ef39dc835b744669
+  $tc'StatusCode1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'StatusCode"#) -}
+dc6d2507aa7cacc61c96d238c27f141e
+  $tcCode :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7838174176564518427##
+                   16972853333483312029##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tcCode1) -}
+8600e7a473214c77aad8a0f3255e5c0b
+  $tcCode1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Code"#) -}
+f25d6759dbee28af5d44711a04a33efb
+  $tcStatusCode :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2865062985669883816##
+                   9334287157630024475##
+                   Response.StatusCode.$trModule
+                   Response.StatusCode.$tcStatusCode1) -}
+bf5142d09cfad3d230bb118b474f78f9
+  $tcStatusCode1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "StatusCode"#) -}
+dfddcf7da076fa04a18bf177ddaa4b55
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Response.StatusCode.$trModule2
+                   Response.StatusCode.$trModule1) -}
+4eee51d9b8761245492b3a2c4361ee6d
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Response.StatusCode"#) -}
+246cfef6d5dbf1d92cdb1b99f11cdfc0
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+8b2a2c0e9726b296b02c7e12f537f809
+  data Code = Continue | NotFound | Ok
+708f2f27e0d6637779ea09dfb7e30353
+  data StatusCode
+    = StatusCode {code :: Response.StatusCode.Code,
+                  statusCode :: GHC.Integer.Type.Integer,
+                  reasonPharse :: [GHC.Types.Char]}
+b872e340ef8cdd80a86178c4a373342d
+  code :: Response.StatusCode.StatusCode -> Response.StatusCode.Code
+  RecSel Left Response.StatusCode.StatusCode
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.StatusCode.StatusCode) ->
+                 case ds of wild { Response.StatusCode.StatusCode ds1 ds2 ds3 ->
+                 ds1 }) -}
+e1f5db6f1f07495b35e52ed4369087c8
+  getReasonPhrase ::
+    Response.StatusCode.StatusCode -> [GHC.Types.Char]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.StatusCode.StatusCode) ->
+                 case ds of wild { Response.StatusCode.StatusCode ds1 ds2 phrase ->
+                 phrase }) -}
+16abd91b331221f38d2244d1b695ea84
+  getStatusCode ::
+    Response.StatusCode.StatusCode -> GHC.Integer.Type.Integer
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.StatusCode.StatusCode) ->
+                 case ds of wild { Response.StatusCode.StatusCode ds1 value ds2 ->
+                 value }) -}
+be365f909f1b0b927ec78d166012546f
+  notFound :: Response.StatusCode.StatusCode
+  {- Strictness: m,
+     Unfolding: (Response.StatusCode.StatusCode
+                   Response.StatusCode.NotFound
+                   Response.StatusCode.notFound2
+                   Response.StatusCode.notFound1) -}
+c7b05c037ac69db1926bebe97ce002a4
+  notFound1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Not Found"#) -}
+a3fa9f9753e072fd274ae4ca0ba32ca8
+  notFound2 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (404) -}
+2a28c6a8d3fb2d18762460bf56b6160f
+  ok :: Response.StatusCode.StatusCode
+  {- Strictness: m,
+     Unfolding: (Response.StatusCode.StatusCode
+                   Response.StatusCode.Ok
+                   Response.StatusCode.ok2
+                   Response.StatusCode.ok1) -}
+ae3db90c9cf11163544c2dac829c0f79
+  ok1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "OK"#) -}
+3bf903ded1d69cad345c25871b0885ad
+  ok2 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (200) -}
+08330c7bf15c71211b1eeca669031f50
+  reasonPharse :: Response.StatusCode.StatusCode -> [GHC.Types.Char]
+  RecSel Left Response.StatusCode.StatusCode
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.StatusCode.StatusCode) ->
+                 case ds of wild { Response.StatusCode.StatusCode ds1 ds2 ds3 ->
+                 ds3 }) -}
+f3a8923c43f4d77aea758fc6f5b10917
+  statusCode ::
+    Response.StatusCode.StatusCode -> GHC.Integer.Type.Integer
+  RecSel Left Response.StatusCode.StatusCode
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Response.StatusCode.StatusCode) ->
+                 case ds of wild { Response.StatusCode.StatusCode ds1 ds2 ds3 ->
+                 ds2 }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

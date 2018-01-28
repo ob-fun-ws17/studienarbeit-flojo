@@ -1,0 +1,336 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-26 13:17:41.476199156 UTC
+
+interface Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID:Request.Error 8002
+  interface hash: 38100442684a611b67dbc3d43ee3bc43
+  ABI hash: 4ce3a973f4d8229f6de05c9c8e14016d
+  export-list hash: 4f6358a5c4666543c80383d5c705a575
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f6814f38f4c9427d072007935bd50854
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Request.Error.ParseError{Request.Error.HttpMethodNotSupported Request.Error.HttpVersionNotSupported Request.Error.RequestLineMalformed Request.Error.UnknownParseError}
+module dependencies:
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
+                      bytestring-0.10.8.1@bytestring-0.10.8.1*
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.Show a027f5ac24879eaba752f44aa90fe511
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Char8 64661030f691dd1495e363eeda7a5344
+import  -/  bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Internal 89cda42ec946d9d6577dd41ab95d523e
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fEqParseError :: GHC.Classes.Eq Request.Error.ParseError
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Error.ParseError
+                  Request.Error.$fEqParseError_$c==
+                  Request.Error.$fEqParseError_$c/= -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fEqParseError_$c/= ::
+    Request.Error.ParseError
+    -> Request.Error.ParseError -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Request.Error.ParseError)
+                   (b :: Request.Error.ParseError) ->
+                 case Request.Error.$fEqParseError_$c== a b of wild {
+                   GHC.Types.False -> GHC.Types.True
+                   GHC.Types.True -> GHC.Types.False }) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fEqParseError_$c== ::
+    Request.Error.ParseError
+    -> Request.Error.ParseError -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: (\ (ds :: Request.Error.ParseError)
+                   (ds1 :: Request.Error.ParseError) ->
+                 case ds of wild {
+                   Request.Error.RequestLineMalformed a1
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Request.Error.RequestLineMalformed b1
+                        -> Data.ByteString.Internal.eq a1 b1 }
+                   Request.Error.HttpMethodNotSupported a1
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Request.Error.HttpMethodNotSupported b1
+                        -> Data.ByteString.Internal.eq a1 b1 }
+                   Request.Error.HttpVersionNotSupported a1
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Request.Error.HttpVersionNotSupported b1
+                        -> Data.ByteString.Internal.eq a1 b1 }
+                   Request.Error.UnknownParseError a1
+                   -> case ds1 of wild1 {
+                        DEFAULT -> GHC.Types.False
+                        Request.Error.UnknownParseError b1
+                        -> Data.ByteString.Internal.eq a1 b1 } }) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fShowParseError :: GHC.Show.Show Request.Error.ParseError
+  DFunId
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Request.Error.ParseError
+                  Request.Error.$fShowParseError_$cshowsPrec
+                  Request.Error.$fShowParseError_$cshow
+                  Request.Error.$fShowParseError_$cshowList -}
+1579929be7aabce7f0caafd1e456db7c
+  $fShowParseError1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "An unknown parse error occured."#) -}
+186f597ac9581b940a9c66fec29bf658
+  $fShowParseError2 :: (GHC.Types.Char -> b -> b) -> b -> b
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U>,
+     Unfolding: (\ @ b
+                   (c :: GHC.Types.Char -> b -> b)[OneShot]
+                   (n :: b)[OneShot] ->
+                 GHC.CString.unpackFoldrCString#
+                   @ b
+                   "Not supported Http version in Request: "#
+                   c
+                   n) -}
+9f782a25c1b0beae9e839dc36c4f1f6d
+  $fShowParseError3 :: (GHC.Types.Char -> b -> b) -> b -> b
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U>,
+     Unfolding: (\ @ b
+                   (c :: GHC.Types.Char -> b -> b)[OneShot]
+                   (n :: b)[OneShot] ->
+                 GHC.CString.unpackFoldrCString#
+                   @ b
+                   "Request method not supported: "#
+                   c
+                   n) -}
+80f732f2d87a5fac2466ac601c5b2871
+  $fShowParseError4 :: (GHC.Types.Char -> b -> b) -> b -> b
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(C1(U))><L,U>,
+     Unfolding: (\ @ b
+                   (c :: GHC.Types.Char -> b -> b)[OneShot]
+                   (n :: b)[OneShot] ->
+                 GHC.CString.unpackFoldrCString#
+                   @ b
+                   "The request line is not in format \"<METHOD> <PATH> <VERSION>\", but was: "#
+                   c
+                   n) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fShowParseError_$cshow ::
+    Request.Error.ParseError -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: (\ (ds :: Request.Error.ParseError) ->
+                 case ds of wild {
+                   Request.Error.RequestLineMalformed line
+                   -> Request.Error.$fShowParseError4
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case line of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         Data.ByteString.Internal.$wunpackAppendCharsLazy
+                           ww1
+                           ww2
+                           ww3
+                           ww4
+                           (GHC.Types.[] @ GHC.Types.Char) })
+                   Request.Error.HttpMethodNotSupported method
+                   -> Request.Error.$fShowParseError3
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case method of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         Data.ByteString.Internal.$wunpackAppendCharsLazy
+                           ww1
+                           ww2
+                           ww3
+                           ww4
+                           (GHC.Types.[] @ GHC.Types.Char) })
+                   Request.Error.HttpVersionNotSupported version
+                   -> Request.Error.$fShowParseError2
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case version of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         Data.ByteString.Internal.$wunpackAppendCharsLazy
+                           ww1
+                           ww2
+                           ww3
+                           ww4
+                           (GHC.Types.[] @ GHC.Types.Char) })
+                   Request.Error.UnknownParseError string
+                   -> Request.Error.$fShowParseError1 }) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fShowParseError_$cshowList ::
+    [Request.Error.ParseError] -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ls :: [Request.Error.ParseError]) (s :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ Request.Error.ParseError
+                   (Request.Error.$fShowParseError_$cshowsPrec GHC.Show.shows22)
+                   ls
+                   s) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $fShowParseError_$cshowsPrec ::
+    GHC.Types.Int -> Request.Error.ParseError -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,1*U>, Inline: INLINE[0],
+     Unfolding: InlineRule (3, True, True)
+                (\ (w :: GHC.Types.Int)
+                   (w1 :: Request.Error.ParseError)
+                   (w2 :: GHC.Base.String) ->
+                 Request.Error.$w$cshowsPrec w1 w2) -}
+6eb9f2d2c2809fbefeff5db187827d0c
+  $tc'HttpMethodNotSupported :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7915983001261385478##
+                   6142214734935108878##
+                   Request.Error.$trModule
+                   Request.Error.$tc'HttpMethodNotSupported1) -}
+00cc626714ec4b9302d18e3717438994
+  $tc'HttpMethodNotSupported1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'HttpMethodNotSupported"#) -}
+e41d3c0e4c8e8b08d6b4d441851797ef
+  $tc'HttpVersionNotSupported :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2546862676381380007##
+                   10414152534625780676##
+                   Request.Error.$trModule
+                   Request.Error.$tc'HttpVersionNotSupported1) -}
+2f6abbd94749b7644098455df42aa11f
+  $tc'HttpVersionNotSupported1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'HttpVersionNotSupported"#) -}
+9f562be6ad0d94636212b552225b55c3
+  $tc'RequestLineMalformed :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   3574352790320789520##
+                   6150014805902735748##
+                   Request.Error.$trModule
+                   Request.Error.$tc'RequestLineMalformed1) -}
+69da1231d11a495e3f9ba1b9efef46b8
+  $tc'RequestLineMalformed1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'RequestLineMalformed"#) -}
+18c4e753962ac006e9eb29906e8c6cd8
+  $tc'UnknownParseError :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1589597299284071711##
+                   11699706719715791282##
+                   Request.Error.$trModule
+                   Request.Error.$tc'UnknownParseError1) -}
+780c7682e2434e178b93c1d3cea7e3f8
+  $tc'UnknownParseError1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'UnknownParseError"#) -}
+61d88153933595b922979122b2f6c57a
+  $tcParseError :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1932628447376240144##
+                   2827866675391144937##
+                   Request.Error.$trModule
+                   Request.Error.$tcParseError1) -}
+0421fa144798ef23937118f063b42f98
+  $tcParseError1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "ParseError"#) -}
+06a53f28d2c48a0b1a835eefe22c0e5d
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Request.Error.$trModule2
+                   Request.Error.$trModule1) -}
+babc63a4f8e30fca7bcbb5191e162452
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Request.Error"#) -}
+5395f1a72115c7ae2937dc95bce37bd1
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "Webserver-0.1.0.0-2wIQjDRlL5PNyKB5c30ID"#) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  $w$cshowsPrec ::
+    Request.Error.ParseError -> GHC.Base.String -> [GHC.Types.Char]
+  {- Arity: 2, Strictness: <S,1*U><L,1*U>, Inline: [0],
+     Unfolding: (\ (w :: Request.Error.ParseError)
+                   (w1 :: GHC.Base.String) ->
+                 case w of wild {
+                   Request.Error.RequestLineMalformed line
+                   -> Request.Error.$fShowParseError4
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case line of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         GHC.Base.++
+                           @ GHC.Types.Char
+                           (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                              ww1
+                              ww2
+                              ww3
+                              ww4
+                              (GHC.Types.[] @ GHC.Types.Char))
+                           w1 })
+                   Request.Error.HttpMethodNotSupported method
+                   -> Request.Error.$fShowParseError3
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case method of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         GHC.Base.++
+                           @ GHC.Types.Char
+                           (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                              ww1
+                              ww2
+                              ww3
+                              ww4
+                              (GHC.Types.[] @ GHC.Types.Char))
+                           w1 })
+                   Request.Error.HttpVersionNotSupported version
+                   -> Request.Error.$fShowParseError2
+                        @ [GHC.Types.Char]
+                        (GHC.Types.: @ GHC.Types.Char)
+                        (case version of ww { Data.ByteString.Internal.PS ww1 ww2 ww3 ww4 ->
+                         GHC.Base.++
+                           @ GHC.Types.Char
+                           (Data.ByteString.Internal.$wunpackAppendCharsLazy
+                              ww1
+                              ww2
+                              ww3
+                              ww4
+                              (GHC.Types.[] @ GHC.Types.Char))
+                           w1 })
+                   Request.Error.UnknownParseError string
+                   -> GHC.Base.++
+                        @ GHC.Types.Char
+                        Request.Error.$fShowParseError1
+                        w1 }) -}
+59075d3332e880d0f3945bbb6d8cc0fd
+  data ParseError
+    = RequestLineMalformed Data.ByteString.Internal.ByteString
+    | HttpMethodNotSupported Data.ByteString.Internal.ByteString
+    | HttpVersionNotSupported Data.ByteString.Internal.ByteString
+    | UnknownParseError Data.ByteString.Internal.ByteString
+instance [safe] GHC.Classes.Eq [Request.Error.ParseError]
+  = Request.Error.$fEqParseError
+instance [safe] GHC.Show.Show [Request.Error.ParseError]
+  = Request.Error.$fShowParseError
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
