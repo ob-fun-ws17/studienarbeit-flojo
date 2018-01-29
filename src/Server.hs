@@ -1,5 +1,5 @@
  {-# LANGUAGE OverloadedStrings #-}
--- | This module represents the webserver.
+
 module Server (
   start
 )
@@ -12,30 +12,30 @@ import System.IO as IO
 import Response.StatusCode
 import Response.Error
 import Response.Response as R
-import Request.Request as Request
+import Request.Request
 import qualified Read as RD
 import Data.Map
 import Data.List.Split as Split
 
 type ReadResult = Either Error ByteString
 
--- | Start the server with a path to a config file.
 start :: String -> IO()
 start confPath =
-   do conf <- RD.read confPath
+   do conf <- RD.read (\p -> BS2.readFile p) confPath
       case conf of
           Left err -> do
-            IO.putStrLn $ "Started with default config"
+            IO.putStrLn $ "Unable to read config, started with default config"
             startServer port readWithCRoot
               where
                 port = 8080
-                readWithCRoot = configureContentRoot "htdocs"
+                readWithCRoot = RD.readWithPrefix (\p -> BS2.readFile p) "htdocs"
           Right config -> do
             BS2.putStrLn $ BS2.append "Started with config:\n\n" config
-            startServer (port config) (readWithCRoot config)
-               where parsedConfig cfg = fillConfMap $ BS2.unpack cfg
-                     port cfg = getPort $ parsedConfig cfg
-                     readWithCRoot cfg = configureContentRoot $ getContentRoot $ parsedConfig cfg
+            let parsedConfig = fillConfMap $ BS2.unpack config
+            startServer (port parsedConfig) (readWithCRoot parsedConfig)
+               where
+                     port cfg = getPort cfg
+                     readWithCRoot cfg = RD.readWithPrefix (\p -> BS2.readFile p) $ getContentRoot cfg
 
 fillConfMap :: String -> Map String String
 fillConfMap file = fromList $ [getTupel $ lineList line | line <- allLines]
@@ -44,8 +44,6 @@ fillConfMap file = fromList $ [getTupel $ lineList line | line <- allLines]
          getTupel list = ("","")
          lineList l = Split.splitOn ":" l
 
-configureContentRoot :: String -> String -> IO ReadResult
-configureContentRoot root path = RD.read $ root ++ path
 
 getPort :: Map String String -> PortNumber
 getPort conf = read $ conf ! "port"
@@ -65,6 +63,7 @@ startServer port rd =  do
     listen sock 2                              -- set a max of 2 queued connections
     mainLoop sock rd
 
+
 mainLoop :: Socket -> (String -> IO ReadResult) -> IO()
 mainLoop sock rd = do
     conn <- accept sock
@@ -78,11 +77,9 @@ handleConnection (sock, _) rd = do
 
     request <- parseRequest handle
 
-    file <- rd $ BS2.unpack $ path (requestLine request)
+    file <- rd $ BS2.unpack $ path $ requestLine request
     case file of
-      Left err -> do
-        response <- buildErrorResponse err rd
-        sendResponse sock response
+      Left err -> buildErrorResponse err rd >>= sendResponse sock
       Right fileContent -> sendResponse sock $ (buildOkResponse []) fileContent
     hClose handle
 

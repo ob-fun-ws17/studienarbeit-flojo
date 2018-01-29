@@ -29,7 +29,6 @@ data Request = Request {requestLine::RequestLine, headers::[(BS.ByteString, [BS.
 -- ¦ The construcor for a request line. It contains the fields method, path and version.
 data RequestLine = RequestLine {method :: ByteString, path :: ByteString, version :: ByteString} deriving (Show, Eq)
 
-endOfRequest = "\r"
 headerSeparator = ':'
 
 -- | top level function, that is used to parse a request from a handle.
