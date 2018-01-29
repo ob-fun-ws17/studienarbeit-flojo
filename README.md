@@ -9,11 +9,18 @@ Well, its a Webserver. That's what it does...
 Via a handy configuration file, Webby satifies all your configurational needs (as long it's setting the port or the root directory)
 
 ### Look at that speed!!!
-On the localhost we meassured an average of 160 ms response time.
-Think of all the time you gain, compared to other, professional webservers. Read a book or enjoy the sunset (while waiting for your response)
+Think of all the time you gain, compared to other, professional webservers. No hour-long configuration needed. Build, run, have fun! Read a book or enjoy the sunset (while waiting for your response ;-) )
+
+### Build
+`stack build`
+
+### Runn
+`stack exec Webserver-exe`
+
+### Configure
+Edit the file `webby.cfg` in the repository root
 
 For more information, visit our [documentation site][docu]
- [Markdown site][df1]
 
 **Webby | functional elegance **
 
