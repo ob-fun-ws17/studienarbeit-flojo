@@ -1,4 +1,4 @@
-# Webby - The declarative Webserve
+# Webby - The declarative Webserver
 
 Webby is a Webserver, entirely written in Haskell. Which makes it cool, because it works functional!
 
@@ -14,7 +14,7 @@ Think of all the time you gain, compared to other, professional webservers. No h
 ### Build
 `stack build`
 
-### Runn
+### Run
 `stack exec Webserver-exe`
 
 ### Configure
